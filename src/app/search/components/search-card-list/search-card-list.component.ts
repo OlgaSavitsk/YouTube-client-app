@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-search-card-list',
@@ -6,11 +6,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./search-card-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchCardListComponent implements OnInit {
+export class SearchCardListComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-header-controls',
@@ -6,11 +6,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./header-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderControlsComponent implements OnInit {
+export class HeaderControlsComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
