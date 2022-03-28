@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'youtube-client';
+    title = 'youtube-client';
+    public isToggleFilter: boolean = false;
+
+    onToggleFilter() {
+        this.isToggleFilter = !this.isToggleFilter;
+    }
 }

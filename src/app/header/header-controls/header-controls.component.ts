@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header-controls',
@@ -7,7 +7,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderControlsComponent {
+  @Output() toggleFilter = new EventEmitter()
 
-  constructor() { }
+  constructor() {
+  }
 
 }

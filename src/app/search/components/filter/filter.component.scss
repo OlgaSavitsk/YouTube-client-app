@@ -1,0 +1,31 @@
+.filter {
+    background: #e5e5e5;
+}
+
+.filter-container {
+    max-width: 680px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+    p {
+        margin-right: 21px;
+        font-size: 12px;
+        line-height: 14px;
+        color: #2f80ed;
+        cursor: pointer;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.title {
+    font-size: 12px;
+    line-height: 14px;
+    color: #929292;
+}

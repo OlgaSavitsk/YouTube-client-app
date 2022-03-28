@@ -8,6 +8,8 @@ import { SearchCardListComponent } from './search/components/search-card-list/se
 import { SearchCardComponent } from './search/components/search-card/search-card.component';
 import { FilterComponent } from './search/components/filter/filter.component';
 import { HeaderComponent } from './header/header.component';
+import { SortButtonsComponent } from './search/components/filter/sort-buttons/sort-buttons.component';
+import { SortByWordsButtonComponent } from './search/components/filter/sort-by-words-button/sort-by-words-button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HeaderComponent } from './header/header.component';
     SearchCardListComponent,
     SearchCardComponent,
     FilterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SortButtonsComponent,
+    SortByWordsButtonComponent
   ],
   imports: [
     BrowserModule

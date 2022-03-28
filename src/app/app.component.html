@@ -1,1 +1,2 @@
-<app-header></app-header>
+<app-header (toggleFilter)="onToggleFilter()"></app-header>
+<app-filter *ngIf="isToggleFilter"></app-filter>

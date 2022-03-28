@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+span {
+    cursor: pointer;
+}
+
+input {
+    height: 18px;
+    padding: 0 5px;
+    border: none;
+    outline: none;
+    color: gray;
+}
