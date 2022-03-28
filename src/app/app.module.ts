@@ -7,6 +7,7 @@ import { HeaderControlsComponent } from './header/header-controls/header-control
 import { SearchCardListComponent } from './search/components/search-card-list/search-card-list.component';
 import { SearchCardComponent } from './search/components/search-card/search-card.component';
 import { FilterComponent } from './search/components/filter/filter.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FilterComponent } from './search/components/filter/filter.component';
     HeaderControlsComponent,
     SearchCardListComponent,
     SearchCardComponent,
-    FilterComponent
+    FilterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
