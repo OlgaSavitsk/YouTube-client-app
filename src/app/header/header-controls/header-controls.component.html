@@ -4,11 +4,11 @@
     </div>
     <form class="search-box">
         <input type="text" name="text" class="search-input" placeholder="Search..">
-        <button type="submit" class="search-button">
+        <button class="search-button" (click)="onToggleResult($event)">
             search
         </button>
     </form>
-    <button class="setting-button" (click)="toggleFilter.emit()">
+    <button class="setting-button" (click)="onToggleFilter()">
         <img src="../../../assets/icons/settings.svg">
     </button>
 </div>

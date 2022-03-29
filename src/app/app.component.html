@@ -1,2 +1,3 @@
-<app-header (toggleFilter)="onToggleFilter()"></app-header>
+<app-header (toggleFilter)="onToggleFilter()" (toggleSearchResult)="onToggleSearchResult()"></app-header>
 <app-filter *ngIf="isToggleFilter"></app-filter>
+<app-search-card-list [items]="searchItems" *ngIf="isToggleResult"></app-search-card-list>

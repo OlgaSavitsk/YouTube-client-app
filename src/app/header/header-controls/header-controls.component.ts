@@ -8,8 +8,18 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angul
 })
 export class HeaderControlsComponent {
   @Output() toggleFilter = new EventEmitter()
+  @Output() toggleSearchResult = new EventEmitter()
 
   constructor() {
+  }
+
+  onToggleResult(e: Event) {
+    e.preventDefault()
+    this.toggleSearchResult.emit()
+  }
+
+  onToggleFilter() {
+    this.toggleFilter.emit()
   }
 
 }

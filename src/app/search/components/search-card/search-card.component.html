@@ -1,1 +1,17 @@
-<p>search-card works!</p>
+<div class="card-container" *ngIf="item">
+    <mat-card  class="example-card">
+      <img mat-card-image src="{{item.snippet.thumbnails.medium.url}}">
+      <mat-card-content>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon><mat-card-subtitle>{{ item.statistics.viewCount }}</mat-card-subtitle>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_up</mat-icon><mat-card-subtitle>{{ item.statistics.likeCount }}</mat-card-subtitle>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_down</mat-icon><mat-card-subtitle>{{ item.statistics.dislikeCount }}</mat-card-subtitle>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">question_answer</mat-icon><mat-card-subtitle>{{ item.statistics.commentCount }}</mat-card-subtitle>
+      </mat-card-content>
+      <mat-card-content>
+        <mat-card-title>{{ item.snippet.localized.title }}</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>more...</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

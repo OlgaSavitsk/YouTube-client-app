@@ -1,1 +1,6 @@
-<p>search-card-list works!</p>
+<app-search-card *ngFor="let item of items" [item]="item">
+</app-search-card>
+
+<ng-template #noSearchResult>
+    <span>No video yet</span>
+</ng-template>

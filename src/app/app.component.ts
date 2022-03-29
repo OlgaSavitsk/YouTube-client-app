@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SEARCH_ITEM } from './app.constants';
 
 @Component({
     selector: 'app-root',
@@ -7,9 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'youtube-client';
-    public isToggleFilter: boolean = false;
+    isToggleFilter!: boolean;
+    isToggleResult!: boolean;
+    searchItems = SEARCH_ITEM.items;
 
-    onToggleFilter() {
+    onToggleFilter(): void {
         this.isToggleFilter = !this.isToggleFilter;
+    }
+
+    onToggleSearchResult(): void {
+        this.isToggleResult = !this.isToggleResult;
     }
 }
