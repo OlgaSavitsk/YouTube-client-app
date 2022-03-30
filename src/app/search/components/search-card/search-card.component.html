@@ -1,5 +1,6 @@
 <div class="card-container" *ngIf="item">
-    <mat-card  class="example-card">
+    <mat-card  class="example-card"
+    [appHighlight]="getDateDiff(item.snippet.publishedAt)">
       <img mat-card-image src="{{item.snippet.thumbnails.medium.url}}">
       <mat-card-content>
         <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon><mat-card-subtitle>{{ item.statistics.viewCount }}</mat-card-subtitle>

@@ -7,8 +7,8 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderControlsComponent {
-  @Output() toggleFilter = new EventEmitter()
-  @Output() toggleSearchResult = new EventEmitter()
+  @Output() toggleFilter = new EventEmitter<boolean>()
+  @Output() toggleSearchResult = new EventEmitter<boolean>()
 
   constructor() {
   }

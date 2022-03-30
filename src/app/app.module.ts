@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { SortButtonsComponent } from './search/components/filter/sort-buttons/sort-buttons.component';
 import { SortByWordsButtonComponent } from './search/components/filter/sort-by-words-button/sort-by-words-button.component';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     SharedModule
   ],
   providers: [],
