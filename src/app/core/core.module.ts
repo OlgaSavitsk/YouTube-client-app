@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VideoInfoComponent } from './components/video-info/video-info.component';
+import VideoInfoComponent from './components/video-info/video-info.component';
 
 
 
@@ -12,4 +12,4 @@ import { VideoInfoComponent } from './components/video-info/video-info.component
     CommonModule
   ]
 })
-export class CoreModule { }
+export default class CoreModule { }

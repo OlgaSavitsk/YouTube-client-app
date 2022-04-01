@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchCardComponent } from './search-card.component';
+import SearchCardComponent from './search-card.component';
 
 describe('SearchCardComponent', () => {
   let component: SearchCardComponent;

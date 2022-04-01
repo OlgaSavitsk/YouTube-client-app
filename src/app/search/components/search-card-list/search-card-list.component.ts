@@ -6,7 +6,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./search-card-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchCardListComponent {
+export default class SearchCardListComponent {
 
   constructor() { }
 

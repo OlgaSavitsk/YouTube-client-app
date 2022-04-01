@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './header/login/login.component';
-import { HeaderControlsComponent } from './header/header-controls/header-controls.component';
-import { SearchCardListComponent } from './search/components/search-card-list/search-card-list.component';
-import { SearchCardComponent } from './search/components/search-card/search-card.component';
-import { FilterComponent } from './search/components/filter/filter.component';
+import AppComponent from './app.component';
+import HeaderControlsComponent from './header/header-controls/header-controls.component';
+import LoginComponent from './header/login/login.component';
+import FilterComponent from './search/components/filter/filter.component';
+import SearchCardListComponent from './search/components/search-card-list/search-card-list.component';
+import SearchCardComponent from './search/components/search-card/search-card.component';
 
 @NgModule({
   declarations: [
@@ -23,4 +23,4 @@ import { FilterComponent } from './search/components/filter/filter.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export default class AppModule { }

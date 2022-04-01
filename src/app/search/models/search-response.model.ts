@@ -4,9 +4,11 @@ export interface SearchResponse {
     id: number;
     kind: string;
     etag: string;
-    pageInfo: {
-      totalResults: number;
-      resultsPerPage: number;
-    };
+    pageInfo: SearchPageInfo;
     items: SearchItem[];
+  }
+
+  export interface SearchPageInfo {
+    totalResults: number;
+    resultsPerPage: number;
   }
