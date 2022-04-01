@@ -6,7 +6,7 @@ import { SearchItem } from 'app/search/models/search-item.model';
 @Pipe({
   name: 'filter'
 })
-export class FilterPipe implements PipeTransform {
+export default class FilterPipe implements PipeTransform {
 
   transform(value: SearchItem[], searchWord: string): SearchItem[] {
     if (value && searchWord) {

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+
 import { SearchItem } from '../../models/search-item.model';
 
 @Component({
@@ -7,7 +8,8 @@ import { SearchItem } from '../../models/search-item.model';
   styleUrls: ['./search-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchCardComponent {
+
+export default class SearchCardComponent {
   @Input() item?: SearchItem
 
   constructor() { }

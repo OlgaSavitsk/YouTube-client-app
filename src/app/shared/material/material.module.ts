@@ -20,4 +20,4 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
   ]
 })
-export class MaterialModule { }
+export default class MaterialModule { }

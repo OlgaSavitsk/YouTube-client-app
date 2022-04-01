@@ -7,7 +7,8 @@ import { IDesk, sortDesk } from './core/pipes/sort.pipe';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+
+export default class AppComponent {
     isToggleFilter!: boolean;
     isToggleResult!: boolean;
     searchItems = SEARCH_ITEM.items;
@@ -22,12 +23,12 @@ export class AppComponent {
         this.isToggleResult = !this.isToggleResult;
     }
 
-    sortByDate(): void {
+    public sortByDate(): void {
         sortDesk.date = !sortDesk.date;
         sortDesk.sort = 'date';
     }
 
-    sortByViews(): void {
+    public sortByViews(): void {
         sortDesk.view = !sortDesk.view;
         sortDesk.sort = 'view';
     }

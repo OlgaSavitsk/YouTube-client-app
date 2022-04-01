@@ -6,7 +6,7 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angul
     styleUrls: ['./sort-by-words-button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SortByWordsButtonComponent {
+export default class SortByWordsButtonComponent {
     @Output() changeSearchInputValue = new EventEmitter();
     searchInputValue: string = '';
     constructor() {}

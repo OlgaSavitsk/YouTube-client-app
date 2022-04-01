@@ -6,7 +6,7 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angul
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
+export default class HeaderComponent {
     @Output() toggleFilter = new EventEmitter<boolean>();
     @Output() toggleSearchResult = new EventEmitter<boolean>();
 

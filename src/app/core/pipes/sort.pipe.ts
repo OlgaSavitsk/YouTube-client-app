@@ -16,7 +16,7 @@ export const sortDesk: IDesk = {
 @Pipe({
     name: 'sort',
 })
-export class SortPipe implements PipeTransform {
+export default class SortPipe implements PipeTransform {
     transform(
         value: SearchItem[],
         isDesk: boolean

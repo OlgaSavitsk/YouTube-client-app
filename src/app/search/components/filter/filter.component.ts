@@ -12,7 +12,8 @@ import {
     styleUrls: ['./filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilterComponent {
+
+export default class FilterComponent {
     @Input() toggleFilter?: boolean;
     @Output() clickSortDate = new EventEmitter();
     @Output() clickSortViews = new EventEmitter();

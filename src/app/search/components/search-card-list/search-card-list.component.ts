@@ -8,7 +8,8 @@ import { SearchItem } from '../../models/search-item.model';
     styleUrls: ['./search-card-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchCardListComponent {
+
+export default class SearchCardListComponent {
     @Input() items: SearchItem[] = [];
     @Input() toggleResult: boolean = false;
     @Input() isDesk!: boolean;

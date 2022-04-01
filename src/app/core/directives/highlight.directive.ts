@@ -11,7 +11,7 @@ import {
 @Directive({
     selector: '[appHighlight]',
 })
-export class HighlightDirective implements OnInit {
+export default class HighlightDirective implements OnInit {
     @Input('appHighlight') public diffDay!: number;
     color?: string;
 
