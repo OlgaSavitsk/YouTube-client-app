@@ -1,3 +1,5 @@
 <app-header (toggleFilter)="onToggleFilter()" (toggleSearchResult)="onToggleSearchResult()"></app-header>
-<app-filter *ngIf="isToggleFilter"></app-filter>
-<app-search-card-list [items]="searchItems" *ngIf="isToggleResult"></app-search-card-list>
+<app-filter *ngIf="isToggleFilter" (clickSortDate)="sortByDate()" (clickSortViews)="sortByViews()"
+    (changeSearchInputValue)="sorBytWord($event)"></app-filter>
+<app-search-card-list [items]="searchItems" *ngIf="isToggleResult" [isDesk]=" sortDesk.date" [isDesk]="sortDesk.view"
+    [searchWord]="searchInputValue"></app-search-card-list>

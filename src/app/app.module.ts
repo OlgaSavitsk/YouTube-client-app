@@ -12,25 +12,22 @@ import { SortButtonsComponent } from './search/components/filter/sort-buttons/so
 import { SortByWordsButtonComponent } from './search/components/filter/sort-by-words-button/sort-by-words-button.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HeaderControlsComponent,
-    SearchCardListComponent,
-    SearchCardComponent,
-    FilterComponent,
-    HeaderComponent,
-    SortButtonsComponent,
-    SortByWordsButtonComponent
-  ],
-  imports: [
-    BrowserModule,
-    CoreModule,
-    SharedModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        HeaderControlsComponent,
+        SearchCardListComponent,
+        SearchCardComponent,
+        FilterComponent,
+        HeaderComponent,
+        SortButtonsComponent,
+        SortByWordsButtonComponent,
+    ],
+    imports: [BrowserModule, CoreModule, SharedModule, FormsModule, ReactiveFormsModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

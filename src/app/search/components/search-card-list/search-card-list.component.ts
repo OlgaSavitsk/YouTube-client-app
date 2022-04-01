@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+
 import { SearchItem } from '../../models/search-item.model';
 
 @Component({
@@ -10,6 +11,8 @@ import { SearchItem } from '../../models/search-item.model';
 export class SearchCardListComponent {
     @Input() items: SearchItem[] = [];
     @Input() toggleResult: boolean = false;
+    @Input() isDesk!: boolean;
+    @Input() searchWord!: string;
 
     constructor() {}
 }

@@ -1,14 +1,13 @@
 :host {
     display: flex;
     column-gap: 20px;
-    font-weight: 600;
     font-size: 12px;
 }
 
 span {
     display: flex;
     align-items: center;
-    column-gap: 7px;
+    column-gap: 3px;
     cursor: pointer;
 
     p {
@@ -19,4 +18,8 @@ span {
         width: 20px;
         height: 20px;
     }
+}
+
+.mat-icon {
+    color: #929292;
 }

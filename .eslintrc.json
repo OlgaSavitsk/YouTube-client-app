@@ -6,7 +6,7 @@
   "overrides": [
     {
       "files": [
-        "*.ts"
+        "src/**/*.ts"
       ],
       "parserOptions": {
         "project": [
@@ -19,7 +19,8 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "airbnb-typescript/base",
         "prettier",
-        "plugin:import/recommended"
+        "plugin:import/recommended",
+        "plugin:import/typescript"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -38,6 +39,14 @@
             "style": "kebab-case"
           }
         ],
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "ts": "never",
+            "tsx": "never"
+          }
+       ],
         "@typescript-eslint/no-useless-constructor": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@angular-eslint/no-empty-lifecycle-method": "off",
@@ -53,5 +62,13 @@
       ],
       "rules": {}
     }
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  }
 }

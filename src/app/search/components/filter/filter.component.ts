@@ -1,14 +1,22 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+    Component,
+    ChangeDetectionStrategy,
+    Input,
+    Output,
+    EventEmitter,
+} from '@angular/core';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-filter',
+    templateUrl: './filter.component.html',
+    styleUrls: ['./filter.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterComponent {
-  @Input() toggleFilter?: boolean;
+    @Input() toggleFilter?: boolean;
+    @Output() clickSortDate = new EventEmitter();
+    @Output() clickSortViews = new EventEmitter();
+    @Output() changeSearchInputValue = new EventEmitter();
 
-  constructor() { }
-
+    constructor() {}
 }

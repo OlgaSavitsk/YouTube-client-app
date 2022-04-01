@@ -1,8 +1,8 @@
-<span>
+<span (click)="clickSortDate.emit()">
     <p>date</p>
-    <img src="../../../assets/icons/up-arrow.svg" alt="">
+    <mat-icon>{{ !sortDesk.date ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
 </span>
-<span>
+<span (click)="clickSortViews.emit()">
     <p>count of views</p>
-    <img src="../../../assets/icons/up-arrow.svg" alt="">
+    <mat-icon>{{ !sortDesk.view ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
 </span>

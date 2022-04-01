@@ -1,2 +1,3 @@
 <span>by word or sentance</span>
-<input type="text" name="search" />
+<input type="text" name="search" [(ngModel)]="searchInputValue"
+    (input)="changeSearchInputValue.emit(searchInputValue)" />

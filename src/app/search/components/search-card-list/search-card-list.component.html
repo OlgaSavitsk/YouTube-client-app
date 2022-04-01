@@ -1,4 +1,4 @@
-<app-search-card *ngFor="let item of items" [item]="item">
+<app-search-card *ngFor="let item of items | sort: isDesk | filter: searchWord" [item]="item">
 </app-search-card>
 
 <ng-template #noSearchResult>
