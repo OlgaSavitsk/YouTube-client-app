@@ -68,9 +68,12 @@
   ],
   "parser": "@typescript-eslint/parser",
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
+      "typescript": {},
       "node": {
-        "paths": ["src"],
         "extensions": [".ts", ".tsx"]
       }
     }

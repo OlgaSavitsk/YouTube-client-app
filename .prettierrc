@@ -1,12 +1,12 @@
 {
-    "tabWidth": 4,
+    "tabWidth": 2,
     "printWidth": 90,
     "useTabs": false,
     "overrides": [
         {
             "files": "*.component.html",
             "options":
-                { "parser": "angular" } 
+                { "parser": "angular" }
         },
         {
             "files": "*.ts",

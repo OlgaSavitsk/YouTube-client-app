@@ -9,7 +9,7 @@
     align-items: center;
     margin: 0 auto;
 
-    p {
+    .title {
         margin-right: 21px;
         font-size: 12px;
         line-height: 14px;
@@ -22,10 +22,4 @@
     display: flex;
     align-items: center;
     column-gap: 20px;
-}
-
-.title {
-    font-size: 12px;
-    line-height: 14px;
-    /* color: #929292; */
 }

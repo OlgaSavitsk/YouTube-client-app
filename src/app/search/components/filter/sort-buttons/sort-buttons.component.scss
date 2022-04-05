@@ -4,19 +4,14 @@
     font-size: 12px;
 }
 
-span {
+.sort {
     display: flex;
     align-items: center;
     column-gap: 3px;
     cursor: pointer;
 
-    p {
+    &__text {
         color: #2f80ed;
-    }
-
-    img {
-        width: 20px;
-        height: 20px;
     }
 }
 

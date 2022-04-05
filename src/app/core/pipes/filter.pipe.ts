@@ -1,18 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { SearchItem } from 'app/search/models/search-item.model';
-
+import { SearchItem } from '@search/models/search-item.model';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
 })
 export default class FilterPipe implements PipeTransform {
-
   transform(value: SearchItem[], searchWord: string): SearchItem[] {
     if (value && searchWord) {
-      return value.filter((d) => d.snippet.title.toLowerCase().indexOf(searchWord) > -1);
+      return value.filter(
+        (item: SearchItem) => item.snippet.title.toLowerCase().indexOf(searchWord) > -1,
+      );
     }
     return value;
   }
-
 }

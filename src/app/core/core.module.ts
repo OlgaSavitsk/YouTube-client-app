@@ -5,6 +5,7 @@ import VideoInfoComponent from './components/video-info/video-info.component';
 import FilterPipe from './pipes/filter.pipe';
 import HighlightDirective from './directives/highlight.directive';
 import SortPipe from './pipes/sort.pipe';
+import DateService from './services/date.service';
 
 
 
@@ -23,5 +24,6 @@ import SortPipe from './pipes/sort.pipe';
     SortPipe,
     FilterPipe
   ],
+  providers: [DateService]
 })
 export default class CoreModule { }

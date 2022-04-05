@@ -1,10 +1,13 @@
 import { SearchResponse } from "./search/models/search-response.model";
 
-export const SECONDS_IN_DAY: number = 24 * 60 * 60;
-export const MS: number = SECONDS_IN_DAY * 1000;
-export const NUMBER_DAYS_WEEK = 7;
-export const NUMBER_DAYS_MONTH = 30;
-export const SIX_MONTHS = 6;
+export const enum DateParam {
+  SECONDS_IN_DAY = 24 * 60 * 60,
+  MS = SECONDS_IN_DAY * 1000,
+  NUMBER_DAYS_WEEK = 7,
+  NUMBER_DAYS_MONTH = 30,
+  SIX_MONTHS = 6
+}
+
 export const BORDER_COLOR = {
   blue: "blue",
   green: "green",

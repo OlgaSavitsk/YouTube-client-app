@@ -2,9 +2,9 @@
     <div class="filter-container">
         <p class="title">Sorting by:</p>
         <div class="buttons-container">
-            <app-sort-buttons (clickSortDate)="clickSortDate.emit()" (clickSortViews)="clickSortViews.emit()">
+            <app-sort-buttons (clickSortDate)="sortDate()" (clickSortViews)="sortViews()">
             </app-sort-buttons>
-            <app-sort-by-words-button (changeSearchInputValue)="changeSearchInputValue.emit($event)">
+            <app-sort-by-words-button (changeSearchInputValue)="inputValue($event)">
             </app-sort-by-words-button>
         </div>
     </div>

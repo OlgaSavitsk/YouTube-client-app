@@ -1,24 +1,20 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { SearchItem } from '../../models/search-item.model';
+import DateService from '@core/services/date.service';
+import { SearchItem } from '@search/models/search-item.model';
 
 @Component({
   selector: 'app-search-card',
   templateUrl: './search-card.component.html',
   styleUrls: ['./search-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export default class SearchCardComponent {
-  @Input() item?: SearchItem
+  @Input() item?: SearchItem;
 
-  constructor() { }
+  constructor(private dateService: DateService) {}
 
   getDateDiff(publishedAt: string): number {
-    const today = new Date().getTime();
-    const dateFrom = new Date(publishedAt).getTime();
-    const diffDay = today - dateFrom;
-    return diffDay;
+    return this.dateService.getDateDiff(publishedAt);
   }
-
 }
