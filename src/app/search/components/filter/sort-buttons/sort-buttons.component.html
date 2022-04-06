@@ -1,8 +1,8 @@
 <span class="sort" (click)="sortDate()">
     <p class="sort__text">date</p>
-    <mat-icon>{{ !sortDesk.date ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+    <mat-icon *ngIf="toggleArrowDate">{{ !sortDesk.date ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
 </span>
 <span class="sort" (click)="sortViews()">
     <p class="sort__text">count of views</p>
-    <mat-icon>{{ !sortDesk.view ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+    <mat-icon *ngIf="toggleArrowView">{{ !sortDesk.view ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
 </span>
