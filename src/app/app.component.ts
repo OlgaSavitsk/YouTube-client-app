@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { SEARCH_ITEM } from './app.constants';
-import { IDesk, sortDesk } from './core/pipes/sort.pipe';
+import { IDesk, sortDesk } from './youtube/pipes/sort.pipe';
 
 @Component({
   selector: 'app-root',

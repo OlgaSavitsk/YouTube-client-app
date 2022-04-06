@@ -1,4 +1,4 @@
-import { SearchResponse } from "./search/models/search-response.model";
+import { SearchResponse } from "./youtube/models/search-response.model";
 
 export const enum DateParam {
   SECONDS_IN_DAY = 24 * 60 * 60,
@@ -29,7 +29,7 @@ export const SEARCH_ITEM: SearchResponse = {
         etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/tmmI1yiRrmLWlKikXk1gD3TXsUI"',
         id: 'YN8zNnV0sK8',
         snippet: {
-          publishedAt: '2022-03-30T12:42:19.000Z',
+          publishedAt: '2022-04-05T12:42:19.000Z',
           channelId: 'UCg8ss4xW9jASrqWGP30jXiw',
           title: 'Angular 8 - Быстрый курс за 60 минут',
           description: 'Полный курс по Angular 8+:\nhttps://clc.to/angular\n\nTelegram: https://teleg.one/js_by_vladilen \nInstagram: https://www.instagram.com/vladilen.minin \nVK: https://vk.com/vladilen.minin \nГруппа VK: https://vk.com/js_by_vladilen \n\nReact Native: мобильная разработка на JavaScript:\nhttps://clc.to/rnative\n\nПоддержать выпуск новых видео:\nЯД: https://money.yandex.ru/to/410013757655670\nPayPal: https://www.paypal.me/vladilenm \n\n30 мая 2019 года бы релиз Angular 8 и я решил записать  по нему быстрый курс. В видео вы узнаете, как Angular работает, как его установить.\nВ результате урока я покажу создание Todo приложения с разными подходами. Разберем работу с сервером, сервисами, пайпами, коммуникацией между компонентами и немного RxJS\n\nИсходный код:\nhttps://github.com/vladilenm/angular8-cc\n\nAngular 8 - Быстрый курс за 60 минут',
@@ -553,7 +553,7 @@ export const SEARCH_ITEM: SearchResponse = {
         etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/u2qq5ltpXouoIrpkJgGLu8YOIeg"',
         id: 'u1VCxpvDgsk',
         snippet: {
-          publishedAt: '2022-03-30T15:00:05.000Z',
+          publishedAt: '2022-04-05T15:00:05.000Z',
           channelId: 'UCvuY904el7JvBlPbdqbfguw',
           title: 'Уроки Angular для начинающих / #1 - Введение в Angular',
           description: 'Приступаем к изучению библиотеки Angular. В ходе курса мы создадим небольшой сайт и научимся всем основным концепциям библиотеки Angular. Мы рассмотрим события, компоненты, создание форм и многое другое, чтобы вы в дальнейшем сами могли создавать веб сайты на Angular.\n\n1) Курс на сайте itProger: https://itproger.com/course/angular\n2) Node JS: https://nodejs.org/\n3) Редактор кода: https://atom.io/\n4) Angular CLI: https://cli.angular.io/\n\n✔ Сообщество программистов: https://itproger.com/\n\n✔ -------------\nВступай в группу Вк - https://vk.com/prog_life 🚀\nГруппа FaceBook - https://goo.gl/XW0aaP\n\nInstagram: https://www.instagram.com/gosha_dudar/\nTelegram: http://t.me/itProger_official\nTwitter - https://twitter.com/GoshaDudar\n\n- Уроки от #GoshaDudar 👨🏼\u200d💻\n- Все уроки по хештегу #goshaAngular',

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { SearchItem } from '@search/models/search-item.model';
+import { SearchItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-search-card-list',

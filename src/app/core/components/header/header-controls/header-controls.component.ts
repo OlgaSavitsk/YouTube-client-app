@@ -11,9 +11,6 @@ export default class HeaderControlsComponent {
   @Output() toggleFilter = new EventEmitter<boolean>()
   @Output() toggleSearchResult = new EventEmitter<boolean>()
 
-  constructor() {
-  }
-
   onToggleResult(e: Event) {
     e.preventDefault()
     this.toggleSearchResult.emit()

@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import DateService from '@core/services/date.service';
-import { SearchItem } from '@search/models/search-item.model';
+import DateService from 'src/app/youtube/services/date.service';
+import { SearchItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-search-card',

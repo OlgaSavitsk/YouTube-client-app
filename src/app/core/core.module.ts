@@ -1,29 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import VideoInfoComponent from './components/video-info/video-info.component';
-import FilterPipe from './pipes/filter.pipe';
-import HighlightDirective from './directives/highlight.directive';
-import SortPipe from './pipes/sort.pipe';
-import DateService from './services/date.service';
-
-
+import HeaderComponent from './components/header/header.component';
+import HeaderControlsComponent from './components/header/header-controls/header-controls.component';
+import LoginComponent from './components/header/login/login.component';
+import FooterComponent from './components/footer/footer.component';
+import NotFoundComponent from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    VideoInfoComponent,
-    HighlightDirective,
-    SortPipe,
-    FilterPipe
+    HeaderComponent,
+    LoginComponent,
+    HeaderControlsComponent,
+    FooterComponent,
+    NotFoundComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [
-    HighlightDirective,
-    SortPipe,
-    FilterPipe
-  ],
-  providers: [DateService]
+    HeaderComponent,
+    LoginComponent,
+    HeaderControlsComponent,
+    FooterComponent,
+    NotFoundComponent,
+  ]
 })
-export default class CoreModule { }
+export default class CoreModule {}

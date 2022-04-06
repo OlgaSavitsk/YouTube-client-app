@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
-import { IDesk, sortDesk } from '@core/pipes/sort.pipe';
+import { IDesk, sortDesk } from 'src/app/youtube/pipes/sort.pipe';
 
 @Component({
   selector: 'app-sort-buttons',
