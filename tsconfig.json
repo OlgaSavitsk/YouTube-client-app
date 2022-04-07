@@ -26,7 +26,8 @@
       "@shared/*": ["src/app/shared/*"],
       "@core/*": ["src/app/core/*"],
       "@search/*": ["src/app/search/*"],
-      "@youtube/*": ["src/app/youtube/*"]
+      "@youtube/*": ["src/app/youtube/*"],
+      "@auth/*": ["src/app/auth/*"]
     }
   },
   "angularCompilerOptions": {
