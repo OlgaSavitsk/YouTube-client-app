@@ -10,14 +10,12 @@ import SharedModule from './shared/shared.module';
 import YoutubeModule from './youtube/youtube.module';
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent
   ],
   imports: [
-    CommonModule,
     BrowserModule,
     CoreModule,
-    SharedModule,
     YoutubeModule,
     AuthModule,
     BrowserAnimationsModule,
