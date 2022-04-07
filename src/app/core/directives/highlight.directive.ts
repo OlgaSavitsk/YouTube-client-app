@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
-import { BORDER_COLOR, DateParam } from 'src/app/app.constants';
+import { BorderColor, DateParam } from 'src/app/app.constants';
 
 @Directive({
   selector: '[appHighlight]',
@@ -24,13 +24,13 @@ export default class HighlightDirective implements OnInit {
     const months6 = DateParam.MS * DateParam.NUMBER_DAYS_MONTH * DateParam.SIX_MONTHS;
     const month1 = DateParam.MS * DateParam.NUMBER_DAYS_MONTH;
     if (this.diffDay < days7) {
-      this.color = BORDER_COLOR.blue;
+      this.color = BorderColor.blue;
     } else if (this.diffDay < month1) {
-      this.color = BORDER_COLOR.green;
+      this.color = BorderColor.green;
     } else if (this.diffDay > month1 && this.diffDay < months6) {
-      this.color = BORDER_COLOR.yellow;
+      this.color = BorderColor.yellow;
     } else {
-      this.color = BORDER_COLOR.red;
+      this.color = BorderColor.red;
     }
     return this.color;
   }
