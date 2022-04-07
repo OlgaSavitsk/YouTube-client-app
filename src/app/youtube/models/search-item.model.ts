@@ -29,7 +29,7 @@ interface SearchItemSnippetThumbnails {
     commentCount: string;
   }
 
-  interface SearchThumbnailsSize {
+  export interface SearchThumbnailsSize {
     default: SearchItemSnippetThumbnails;
     medium: SearchItemSnippetThumbnails;
     high: SearchItemSnippetThumbnails;
