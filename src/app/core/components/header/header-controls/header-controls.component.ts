@@ -1,23 +1,27 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
+import { ToggleService } from '@core/services/toggle.service';
+
 @Component({
   selector: 'app-header-controls',
   templateUrl: './header-controls.component.html',
   styleUrls: ['./header-controls.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export default class HeaderControlsComponent {
-  @Output() toggleFilter = new EventEmitter<boolean>()
-  @Output() toggleSearchResult = new EventEmitter<boolean>()
+  isToggleFilter: boolean = false;
+  isToggleResult: boolean = false;
+
+  constructor(public toggleService: ToggleService) {}
 
   onToggleResult(e: Event) {
-    e.preventDefault()
-    this.toggleSearchResult.emit()
+    e.preventDefault();
+    this.isToggleResult = !this.isToggleResult;
+    this.toggleService.toggleSearchResult = this.isToggleResult;
   }
 
   onToggleFilter() {
-    this.toggleFilter.emit()
+    this.isToggleFilter = !this.isToggleFilter;
+    this.toggleService.toggleFilter = this.isToggleFilter;
   }
-
 }

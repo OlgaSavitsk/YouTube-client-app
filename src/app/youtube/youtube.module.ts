@@ -13,6 +13,9 @@ import CardDetailsPageComponent from './pages/card-details-page/card-details-pag
 import FilterPipe from './pipes/filter.pipe';
 import SortPipe from './pipes/sort.pipe';
 import DateService from './services/date.service';
+import { YoutubeRoutingModule } from './youtube-routing.module';
+import { SearchResultPageComponent } from './pages/card-list-page/search-result-page.component';
+import { ToggleService } from '@core/services/toggle.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,16 @@ import DateService from './services/date.service';
     SortButtonsComponent,
     SortByWordsButtonComponent,
     CardDetailsPageComponent,
+    SearchResultPageComponent,
   ],
-  imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule],
-  exports: [FilterComponent, SearchCardListComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    YoutubeRoutingModule,
+  ],
+  exports: [FilterComponent, SearchCardListComponent, SearchResultPageComponent],
   providers: [DateService],
 })
-export default class YoutubeModule {}
+export class YoutubeModule {}

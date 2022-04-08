@@ -10,7 +10,7 @@ import { SearchItem } from 'src/app/youtube/models/search-item.model';
 })
 export default class SearchCardListComponent {
   @Input() items: SearchItem[] = [];
-  @Input() toggleResult: boolean = false;
+  @Input() isToggleResult!: boolean;
   @Input() isDeskDate: boolean | undefined;
   @Input() isDeskView: boolean | undefined;
   @Input() sortParam: string | undefined;

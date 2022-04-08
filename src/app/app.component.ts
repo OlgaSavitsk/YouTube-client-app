@@ -9,22 +9,12 @@ import { IDesk, sortDesk } from './youtube/pipes/sort.pipe';
   styleUrls: ['./app.component.scss'],
 })
 export default class AppComponent {
-  isToggleFilter!: boolean;
-  isToggleResult!: boolean;
   searchItems = SEARCH_ITEM.items;
   sortDesk: IDesk = sortDesk;
   searchInputValue: string = '';
   isDeskSortDate: boolean | undefined;
   isDeskSortView: boolean | undefined;
   sortParam: string | undefined;
-
-  onToggleFilter(): void {
-    this.isToggleFilter = !this.isToggleFilter;
-  }
-
-  onToggleSearchResult(): void {
-    this.isToggleResult = !this.isToggleResult;
-  }
 
   sortByDate(): void {
     sortDesk.date = !sortDesk.date;

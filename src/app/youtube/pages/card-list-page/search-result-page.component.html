@@ -1,0 +1,8 @@
+<app-filter *ngIf="isToggleFilter" (clickSortDate)="sortByDate()" (clickSortViews)="sortByViews()"
+    (changeSearchInputValue)="sorBytWord($event)"></app-filter>
+<app-search-card-list [items]="searchItems" *ngIf="isToggleResult; else noSearchResult" [isDeskDate]="isDeskSortDate"
+    [isDeskView]="isDeskSortView" [sortParam]="sortParam" [searchWord]="searchInputValue" [isToggleResult]="isToggleResult"></app-search-card-list>
+
+<ng-template #noSearchResult>
+    <span class="template">No video yet</span>
+</ng-template>

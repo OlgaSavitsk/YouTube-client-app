@@ -7,6 +7,7 @@ import SharedModule from '@shared/shared.module';
 import AuthService from './services/auth.service';
 import LocalstorageService from './services/localstorage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AuthRoutingModule,
   ],
   exports: [AuthPageComponent],
   providers: [AuthService, LocalstorageService]
 })
-export default class AuthModule { }
+export class AuthModule { }
