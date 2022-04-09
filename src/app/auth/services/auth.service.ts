@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IUser } from '@auth/models/user.model';
 
 import LocalstorageService from '@core/services/localstorage.service';
-import { defaultParams } from 'src/app/app.constants';
+import { defaultParams, STORAGE_NAME } from 'src/app/app.constants';
 
 @Injectable()
 export default class AuthService {
@@ -16,7 +16,7 @@ export default class AuthService {
       token,
       isLogged: true,
     });
-    this.storageService.saveToStorage('userDate');
+    this.storageService.saveToStorage(STORAGE_NAME);
     this.isLoggedIn();
   }
 
@@ -36,6 +36,6 @@ export default class AuthService {
   }
 
   logout() {
-    this.storageService.removeStorage('userDate');
+    this.storageService.removeStorage(STORAGE_NAME);
   }
 }

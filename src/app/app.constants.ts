@@ -27,6 +27,8 @@ export const defaultParams: IUser = {
   isLogged: false,
 };
 
+export const STORAGE_NAME = 'userDate'
+
 export const SEARCH_ITEM: SearchResponse = {
   id: 1,
   kind: 'youtube#videoListResponse',
