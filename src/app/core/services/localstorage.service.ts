@@ -2,10 +2,11 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { IUser } from '@auth/models/user.model';
+import { defaultParams } from 'src/app/app.constants';
 
 @Injectable()
 export default class LocalstorageService {
-  private readonly usedLocalStorage: Storage | undefined;
+  private usedLocalStorage: Storage | undefined;
   currentUser: IUser | undefined;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -30,14 +31,16 @@ export default class LocalstorageService {
   loadFromLocalStorage(storageName: string): void {
     const storageData = this.getStorageItem(storageName);
     const checkStorageData = (data: string | null | undefined) => data;
-    if (checkStorageData(storageData)) {
-      const data: any = JSON.parse(storageData!);
+    if (!checkStorageData(storageData)) {
+      this.currentUser = defaultParams;
+    } else {
+      const data: IUser = JSON.parse(storageData!);
       this.currentUser = data;
-    } else this.currentUser = undefined;
+    }
   }
 
-  getStorageData(): any {
-    return JSON.parse(JSON.stringify(this.currentUser));
+  getStorageData(): IUser | undefined {
+    return this.currentUser;
   }
 
   setStorageData(data: IUser): void {

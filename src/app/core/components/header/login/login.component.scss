@@ -1,11 +1,24 @@
 :host {
-    width: 12%;
+    width: 14%;
 }
 
-.login-container {
+.login {
     display: flex;
-}
+    justify-content: flex-end;
 
-.login-avatar {
-    margin: 0 5px;
+    &__avatar {
+        margin: 0 5px;
+    }
+
+    &__button {
+        height: 25px;
+        margin: 0;
+        padding: 0 5px;
+        border: none;
+        border-radius: 5px;
+        background: #2F80ED;
+        color: #FFFFFF;
+        text-align: center;
+        cursor: pointer;
+    }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import AuthPageComponent from '@auth/pages/auth/auth-page.component';
 
 import NotFoundComponent from '@core/pages/not-found/not-found.component';
 

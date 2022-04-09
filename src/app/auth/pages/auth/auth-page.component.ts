@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import AuthService from '@auth/services/auth.service';
+import LocalstorageService from '@core/services/localstorage.service';
+import { ToggleService } from '@core/services/toggle.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -12,9 +14,14 @@ import AuthService from '@auth/services/auth.service';
 })
 export default class AuthPageComponent implements OnInit {
   formGroup!: FormGroup;
-  logged: boolean = false;
+  isLog: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    public authService: AuthService,
+    public storageService: LocalstorageService,
+    private router: Router,
+    public toggleService: ToggleService,
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -32,5 +39,9 @@ export default class AuthPageComponent implements OnInit {
     const token: string = 'fake-jwt-token';
     this.authService.login(login, token);
     this.router.navigate(['search']);
+  }
+
+  toggleLogOut(): void {
+    this.authService.isLoggedIn();
   }
 }

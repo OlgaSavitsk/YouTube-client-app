@@ -1,4 +1,5 @@
-<div class="login-container">
-    <p>Your Name</p>
-    <img class="login-avatar" src="assets/icons/login.svg" alt="avatar">
+<div class="login">
+    <p>{{ username }}</p>
+    <img class="login__avatar" src="assets/icons/login.svg" alt="avatar">
+    <button *ngIf="isLogged" class="login__button" (click)="logOut()">Log out</button>
 </div>

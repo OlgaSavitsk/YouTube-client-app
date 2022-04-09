@@ -14,13 +14,13 @@ export default class HeaderControlsComponent {
 
   constructor(public toggleService: ToggleService) {}
 
-  onToggleResult(e: Event) {
+  onToggleResult(e: Event): void {
     e.preventDefault();
     this.isToggleResult = !this.isToggleResult;
     this.toggleService.toggleSearchResult = this.isToggleResult;
   }
 
-  onToggleFilter() {
+  onToggleFilter(): void {
     this.isToggleFilter = !this.isToggleFilter;
     this.toggleService.toggleFilter = this.isToggleFilter;
   }
