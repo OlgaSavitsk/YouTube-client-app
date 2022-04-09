@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { ToggleService } from '@core/services/toggle.service';
 

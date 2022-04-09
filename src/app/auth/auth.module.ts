@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import AuthPageComponent from './pages/auth/auth-page.component';
 import SharedModule from '@shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import AuthPageComponent from './pages/auth/auth-page.component';
 import AuthService from './services/auth.service';
 import LocalstorageService from './services/localstorage.service';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthRoutingModule } from './auth-routing.module';
+import AuthRoutingModule from './auth-routing.module';
 
 @NgModule({
   declarations: [

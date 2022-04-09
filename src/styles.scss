@@ -21,8 +21,10 @@ body {
     margin: 0 auto;
 }
 
-.mat-typography {
+.mat-typography,
+.mat-typography h3 {
     font: 400 16px/20px Montserrat, "Montserrat", sans-serif;
+    margin: 0;
 
     p {
         margin: 0;

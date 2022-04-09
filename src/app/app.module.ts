@@ -1,13 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
-import { AppRoutingModule } from './app-routing.module';
-import { ToggleService } from '@core/services/toggle.service';
-import { YoutubeModule } from '@youtube/youtube.module';
+import AppRoutingModule from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +15,6 @@ import { YoutubeModule } from '@youtube/youtube.module';
     CoreModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    YoutubeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

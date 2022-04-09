@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ToggleService } from '@core/services/toggle.service';
 
 import { IDesk, sortDesk } from '@youtube/pipes/sort.pipe';
@@ -8,9 +8,9 @@ import { SEARCH_ITEM, SortParam } from 'src/app/app.constants';
   selector: 'app-card-result-page',
   templateUrl: './search-result-page.component.html',
   styleUrls: ['./search-result-page.component.scss'],
-  //changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchResultPageComponent implements OnInit {
+export default class SearchResultPageComponent implements OnInit, DoCheck {
   isToggleFilter!: boolean;
   isToggleResult!: boolean;
   searchItems = SEARCH_ITEM.items;

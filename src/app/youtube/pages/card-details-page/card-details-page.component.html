@@ -1,1 +1,29 @@
-<p>card-details-page works!</p>
+<div class="details" *ngIf="item">
+    <button class="details__button_back">
+        <a routerLink="/search" routerLinkActive="active">
+            <img src="assets/icons/back-button.svg" alt="">
+        </a>
+    </button>
+    <div class="details__image">
+        <img src="{{item.snippet.thumbnails.standard.url}}">
+    </div>
+    <div class="details__description">
+        <h2 class="details__title">{{ item.snippet.localized.title }}</h2>
+        <span class="details__date">{{item.snippet.publishedAt | date: 'EEEE, MMMM d, y'}}</span>
+
+        <div class="text-block">
+            <h3 class="details__subtitle">Description:</h3>
+            <p class="details__date">{{ item.snippet.description }}</p>
+        </div>
+        <mat-card-content>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
+            <mat-card-subtitle>{{ item.statistics.viewCount }}</mat-card-subtitle>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_up</mat-icon>
+            <mat-card-subtitle>{{ item.statistics.likeCount }}</mat-card-subtitle>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_down</mat-icon>
+            <mat-card-subtitle>{{ item.statistics.dislikeCount }}</mat-card-subtitle>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">question_answer</mat-icon>
+            <mat-card-subtitle>{{ item.statistics.commentCount }}</mat-card-subtitle>
+        </mat-card-content>
+    </div>
+</div>

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import NotFoundComponent from '@core/pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  /* { path: '', redirectTo: 'search', pathMatch: 'full' }, */
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
@@ -14,12 +14,13 @@ const routes: Routes = [
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
   },
   {
-    path: '**', component: NotFoundComponent,
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export default class AppRoutingModule {}

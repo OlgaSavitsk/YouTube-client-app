@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import CardDetailsPageComponent from './pages/card-details-page/card-details-page.component';
-import { SearchResultPageComponent } from './pages/card-list-page/search-result-page.component';
+import SearchResultPageComponent from './pages/card-list-page/search-result-page.component';
 
 const routes: Routes = [
   { path: '', component: SearchResultPageComponent },
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class YoutubeRoutingModule {}
+export default class YoutubeRoutingModule {}

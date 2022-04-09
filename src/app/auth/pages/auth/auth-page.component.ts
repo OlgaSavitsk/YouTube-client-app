@@ -23,8 +23,8 @@ export default class AuthPageComponent implements OnInit {
   onSubmit(): void {
     const login: string = this.formGroup.value.login.trim();
     const password: string = this.formGroup.value.password.trim();
-    //this.authService.saveUser({ login, password });
-    //this.router.navigate(['search']);
+    // this.authService.saveUser({ login, password });
+    // this.router.navigate(['search']);
     console.log(this.formGroup.value)
   }
 
