@@ -20,9 +20,10 @@ export class AuthGuard implements CanLoad {
 
   handle() {
     if (this.storageService.getStorageItem(STORAGE_NAME)) {
-      this.router.navigate(['login']);
       return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
     }
-    return false;
   }
 }

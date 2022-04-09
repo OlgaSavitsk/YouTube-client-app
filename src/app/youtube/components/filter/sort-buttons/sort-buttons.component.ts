@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { YoutubeService } from '@youtube/services/youtube.service';
 
 import { IDesk, sortDesk } from 'src/app/youtube/pipes/sort.pipe';
 
@@ -9,22 +10,20 @@ import { IDesk, sortDesk } from 'src/app/youtube/pipes/sort.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SortButtonsComponent {
-  @Output() clickSortDate = new EventEmitter<boolean>();
-  @Output() clickSortViews = new EventEmitter<boolean>();
   sortDesk: IDesk = sortDesk;
   toggleArrowDate: boolean = false;
   toggleArrowView: boolean = false;
 
-  constructor() {}
+  constructor(private youtubeService: YoutubeService) {}
 
   sortDate() {
-    this.clickSortDate.emit();
+    this.youtubeService.sortByDate();
     this.toggleArrowDate = true;
     this.toggleArrowView = false;
   }
 
   sortViews() {
-    this.clickSortViews.emit();
+    this.youtubeService.sortByViews();
     this.toggleArrowView = true;
     this.toggleArrowDate = false;
   }

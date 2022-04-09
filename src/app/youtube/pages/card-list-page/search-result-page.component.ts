@@ -1,16 +1,16 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { ToggleService } from '@core/services/toggle.service';
+import { Component, DoCheck } from '@angular/core';
 
+import { ToggleService } from '@core/services/toggle.service';
 import { IDesk, sortDesk } from '@youtube/pipes/sort.pipe';
-import { SEARCH_ITEM, SortParam } from 'src/app/app.constants';
+import { YoutubeService } from '@youtube/services/youtube.service';
+import { SEARCH_ITEM } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-card-result-page',
   templateUrl: './search-result-page.component.html',
   styleUrls: ['./search-result-page.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SearchResultPageComponent implements OnInit, DoCheck {
+export default class SearchResultPageComponent implements DoCheck {
   isToggleFilter!: boolean;
   isToggleResult!: boolean;
   searchItems = SEARCH_ITEM.items;
@@ -20,28 +20,17 @@ export default class SearchResultPageComponent implements OnInit, DoCheck {
   isDeskSortView: boolean | undefined;
   sortParam: string | undefined;
 
-  constructor(public toggleService: ToggleService) {}
-
-  ngOnInit(): void {}
+  constructor(
+    public toggleService: ToggleService,
+    private youtubeService: YoutubeService,
+  ) {}
 
   ngDoCheck(): void {
     this.isToggleResult = this.toggleService.toggleSearchResult;
     this.isToggleFilter = this.toggleService.toggleFilter;
-  }
-
-  sortByDate(): void {
-    sortDesk.date = !sortDesk.date;
-    this.isDeskSortDate = sortDesk.date;
-    this.sortParam = SortParam.date;
-  }
-
-  sortByViews(): void {
-    sortDesk.view = !sortDesk.view;
-    this.isDeskSortView = sortDesk.view;
-    this.sortParam = SortParam.view;
-  }
-
-  sorBytWord(str: string): void {
-    this.searchInputValue = str;
+    this.isDeskSortDate = this.youtubeService.isDeskSortDate;
+    this.isDeskSortView = this.youtubeService.isDeskSortView;
+    this.searchInputValue = this.youtubeService.searchInputValue;
+    this.sortParam = this.youtubeService.sortParam;
   }
 }

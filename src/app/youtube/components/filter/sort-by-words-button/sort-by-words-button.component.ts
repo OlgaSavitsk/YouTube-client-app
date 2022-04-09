@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy} from '@angular/core';
+
+import { YoutubeService } from '@youtube/services/youtube.service';
 
 @Component({
   selector: 'app-sort-by-words-button',
@@ -7,11 +9,11 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SortByWordsButtonComponent {
-  @Output() changeSearchInputValue = new EventEmitter();
   searchInputValue: string = '';
-  constructor() {}
+
+  constructor(private youtubeService: YoutubeService) {}
 
   inputValue(searchInputValue: string) {
-    this.changeSearchInputValue.emit(searchInputValue);
+    this.youtubeService.sorBytWord(searchInputValue);
   }
 }

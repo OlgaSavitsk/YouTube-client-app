@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -14,21 +8,6 @@ import {
 })
 export default class FilterComponent {
   @Input() toggleFilter?: boolean;
-  @Output() clickSortDate = new EventEmitter();
-  @Output() clickSortViews = new EventEmitter();
-  @Output() changeSearchInputValue = new EventEmitter();
 
   constructor() {}
-
-  sortDate() {
-    this.clickSortDate.emit();
-  }
-
-  sortViews() {
-    this.clickSortViews.emit();
-  }
-
-  inputValue(searchInputValue: string) {
-    this.changeSearchInputValue.emit(searchInputValue);
-  }
 }
