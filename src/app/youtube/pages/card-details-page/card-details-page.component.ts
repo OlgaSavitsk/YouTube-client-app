@@ -19,9 +19,7 @@ export default class CardDetailsPageComponent implements OnInit {
 
   ngOnInit() {
     const { id } = this.route.snapshot.params;
-    console.log(id);
     this.item = this.onSelectCard(id);
-    console.log(this.item);
   }
 
   getDateDiff(publishedAt: string): number {

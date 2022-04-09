@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import AuthService from '@auth/services/auth.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -9,26 +12,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export default class AuthPageComponent implements OnInit {
   formGroup!: FormGroup;
-  logged = false;
+  logged: boolean = false;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
-      login: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
+      login: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   onSubmit(): void {
+    if (this.formGroup.invalid) {
+      return;
+    }
     const login: string = this.formGroup.value.login.trim();
     const password: string = this.formGroup.value.password.trim();
-    // this.authService.saveUser({ login, password });
-    // this.router.navigate(['search']);
-    console.log(this.formGroup.value)
-  }
-
-  toggleLogOut(): void {
-    this.logged = !this.logged;
+    const token: string = 'fake-jwt-token';
+    this.authService.login(login, token);
+    this.router.navigate(['search']);
   }
 }

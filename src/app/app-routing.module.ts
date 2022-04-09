@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import NotFoundComponent from '@core/pages/not-found/not-found.component';
 
 const routes: Routes = [
-  /* { path: '', redirectTo: 'search', pathMatch: 'full' }, */
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
