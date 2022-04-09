@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SearchItem } from '@youtube/models/search-item.model';
 import DateService from '@youtube/services/date.service';
-import { SEARCH_ITEM } from 'src/app/app.constants';
+import YoutubeService from '@youtube/services/youtube.service';
 
 @Component({
   selector: 'app-card-details-page',
@@ -13,20 +13,19 @@ import { SEARCH_ITEM } from 'src/app/app.constants';
 })
 export default class CardDetailsPageComponent implements OnInit {
   item: SearchItem | undefined;
-  searchItems = SEARCH_ITEM.items;
 
-  constructor(private dateService: DateService, private route: ActivatedRoute) {}
+  constructor(
+    private dateService: DateService,
+    private route: ActivatedRoute,
+    private youtubeService: YoutubeService,
+  ) {}
 
   ngOnInit() {
     const { id } = this.route.snapshot.params;
-    this.item = this.onSelectCard(id);
+    this.item = this.youtubeService.onSelectCard(id);
   }
 
   getDateDiff(publishedAt: string): number {
     return this.dateService.getDateDiff(publishedAt);
-  }
-
-  onSelectCard(id: string) {
-    return this.searchItems.find((item) => id === item.id);
   }
 }

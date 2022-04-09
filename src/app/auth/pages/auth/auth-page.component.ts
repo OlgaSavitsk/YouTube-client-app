@@ -3,8 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import AuthService from '@auth/services/auth.service';
-import LocalstorageService from '@core/services/localstorage.service';
-import { ToggleService } from '@core/services/toggle.service';
+import { defaultParams, Paths } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-auth-page',
@@ -17,10 +16,8 @@ export default class AuthPageComponent implements OnInit {
   isLog: boolean = false;
 
   constructor(
-    public authService: AuthService,
-    public storageService: LocalstorageService,
-    private router: Router,
-    public toggleService: ToggleService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,10 +32,9 @@ export default class AuthPageComponent implements OnInit {
       return;
     }
     const login: string = this.formGroup.value.login.trim();
-    const password: string = this.formGroup.value.password.trim();
-    const token: string = 'fake-jwt-token';
+    const token: string = defaultParams.token;
     this.authService.login(login, token);
-    this.router.navigate(['search']);
+    this.router.navigate([Paths.search]);
   }
 
   toggleLogOut(): void {

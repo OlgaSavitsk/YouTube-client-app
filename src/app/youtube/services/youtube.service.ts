@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { sortDesk } from '@youtube/pipes/sort.pipe';
-import { SortParam } from 'src/app/app.constants';
+import { SEARCH_ITEM, SortParam } from 'src/app/app.constants';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class YoutubeService {
+@Injectable()
+export default class YoutubeService {
+  searchItems = SEARCH_ITEM.items;
   searchInputValue: string = '';
   isDeskSortDate: boolean | undefined;
   isDeskSortView: boolean | undefined;
@@ -27,5 +26,9 @@ export class YoutubeService {
 
   sorBytWord(str: string): void {
     this.searchInputValue = str;
+  }
+
+  onSelectCard(id: string) {
+    return this.searchItems.find((item) => id === item.id);
   }
 }

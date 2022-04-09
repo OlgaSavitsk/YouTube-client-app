@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { YoutubeService } from '@youtube/services/youtube.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
+import YoutubeService from '@youtube/services/youtube.service';
 import { IDesk, sortDesk } from 'src/app/youtube/pipes/sort.pipe';
 
 @Component({

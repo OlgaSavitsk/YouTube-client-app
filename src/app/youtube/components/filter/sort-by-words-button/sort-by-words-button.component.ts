@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy} from '@angular/core';
 
-import { YoutubeService } from '@youtube/services/youtube.service';
+import YoutubeService from '@youtube/services/youtube.service';
 
 @Component({
   selector: 'app-sort-by-words-button',

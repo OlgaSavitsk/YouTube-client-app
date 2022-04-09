@@ -15,6 +15,7 @@ import SortPipe from './pipes/sort.pipe';
 import DateService from './services/date.service';
 import YoutubeRoutingModule from './youtube-routing.module';
 import SearchResultPageComponent from './pages/card-list-page/search-result-page.component';
+import YoutubeService from './services/youtube.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,6 @@ import SearchResultPageComponent from './pages/card-list-page/search-result-page
     SearchResultPageComponent,
     CardDetailsPageComponent,
   ],
-  providers: [DateService],
+  providers: [DateService, YoutubeService],
 })
 export class YoutubeModule {}

@@ -7,7 +7,7 @@ import { defaultParams, STORAGE_NAME } from 'src/app/app.constants';
 @Injectable()
 export default class AuthService {
   constructor(public storageService: LocalstorageService) {
-    this.storageService.loadFromLocalStorage('userDate');
+    this.storageService.loadFromLocalStorage(STORAGE_NAME);
   }
 
   login(login: string, token: string): void {

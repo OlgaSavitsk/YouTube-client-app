@@ -2,7 +2,7 @@ import { Component, DoCheck } from '@angular/core';
 
 import { ToggleService } from '@core/services/toggle.service';
 import { IDesk, sortDesk } from '@youtube/pipes/sort.pipe';
-import { YoutubeService } from '@youtube/services/youtube.service';
+import YoutubeService from '@youtube/services/youtube.service';
 import { SEARCH_ITEM } from 'src/app/app.constants';
 
 @Component({

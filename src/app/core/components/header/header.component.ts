@@ -11,7 +11,7 @@ export default class HeaderComponent implements DoCheck {
   username: string | undefined;
   isLogged: boolean | undefined;
 
-  constructor(public authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngDoCheck(): void {
     this.username = this.authService.username.login;

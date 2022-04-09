@@ -21,13 +21,19 @@ export enum SortParam {
   view = 'view',
 }
 
+export const defaultUserName = "Your name"
+
 export const defaultParams: IUser = {
-  login: 'Your name',
-  token: '',
+  login: defaultUserName,
+  token: 'fake-jwt-token',
   isLogged: false,
 };
 
-export const STORAGE_NAME = 'userDate'
+export const STORAGE_NAME = 'userDate';
+export const enum Paths {
+  login = 'login',
+  search = 'search'
+}
 
 export const SEARCH_ITEM: SearchResponse = {
   id: 1,
