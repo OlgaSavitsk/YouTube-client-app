@@ -1,7 +1,11 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  DoCheck,
+} from '@angular/core';
 
 import YoutubeService from '@youtube/services/youtube.service';
-import { IDesk, sortDesk } from 'src/app/youtube/pipes/sort.pipe';
 
 @Component({
   selector: 'app-sort-buttons',
@@ -9,12 +13,24 @@ import { IDesk, sortDesk } from 'src/app/youtube/pipes/sort.pipe';
   styleUrls: ['./sort-buttons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SortButtonsComponent {
-  sortDesk: IDesk = sortDesk;
+export default class SortButtonsComponent implements DoCheck {
+  sortDeskDate: boolean | undefined;
+  sortDeskView: boolean | undefined;
   toggleArrowDate: boolean = false;
   toggleArrowView: boolean = false;
 
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(
+    private youtubeService: YoutubeService,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {}
+
+  ngDoCheck(): void {
+    if (this.youtubeService) {
+      this.changeDetectorRef.markForCheck();
+      this.sortDeskDate = this.youtubeService.isDeskSortDate;
+      this.sortDeskView = this.youtubeService.isDeskSortView;
+    }
+  }
 
   sortDate() {
     this.youtubeService.sortByDate();

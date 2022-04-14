@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { ToggleService } from '@core/services/toggle.service';
+import YoutubeService from '@youtube/services/youtube.service';
 
 @Component({
   selector: 'app-header-controls',
@@ -12,16 +12,16 @@ export default class HeaderControlsComponent {
   isToggleFilter: boolean = false;
   isToggleResult: boolean = false;
 
-  constructor(public toggleService: ToggleService) {}
+  constructor(private youtubeService: YoutubeService) {}
 
   onToggleResult(e: Event): void {
     e.preventDefault();
     this.isToggleResult = !this.isToggleResult;
-    this.toggleService.searchResult= this.isToggleResult;
+    this.youtubeService.isToggleSearchResult = this.isToggleResult;
   }
 
   onToggleFilter(): void {
     this.isToggleFilter = !this.isToggleFilter;
-    this.toggleService.filter = this.isToggleFilter;
+    this.youtubeService.isToggleFilter = this.isToggleFilter;
   }
 }

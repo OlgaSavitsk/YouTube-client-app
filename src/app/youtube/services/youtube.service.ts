@@ -1,31 +1,49 @@
 import { Injectable } from '@angular/core';
-import { sortDesk } from '@youtube/pipes/sort.pipe';
+
 import { SEARCH_ITEM, SortParam } from 'src/app/app.constants';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export default class YoutubeService {
   searchItems = SEARCH_ITEM.items;
   searchInputValue: string = '';
-  isDeskSortDate: boolean | undefined;
-  isDeskSortView: boolean | undefined;
+  isDeskSortDate: boolean | undefined = false;
+  isDeskSortView: boolean | undefined = false;
+  isToggleSearchResult!: boolean;
+  isToggleFilter!: boolean;
   sortParam: string | undefined;
 
-  constructor() { }
+  constructor() {}
 
   sortByDate(): void {
-    sortDesk.date = !sortDesk.date;
-    this.isDeskSortDate = sortDesk.date;
+    this.isDeskSortDate = !this.isDeskSortDate;
     this.sortParam = SortParam.dateParam;
   }
 
   sortByViews(): void {
-    sortDesk.view = !sortDesk.view;
-    this.isDeskSortView = sortDesk.view;
+    this.isDeskSortView = !this.isDeskSortView;
     this.sortParam = SortParam.viewParam;
   }
 
   filterByWord(str: string): void {
     this.searchInputValue = str;
+  }
+
+  set searchResult(val: boolean) {
+    this.isToggleSearchResult = val;
+  }
+
+  get searchResult(): boolean {
+    return this.isToggleSearchResult;
+  }
+
+  set filter(val: boolean) {
+    this.isToggleFilter = val;
+  }
+
+  get filter(): boolean {
+    return this.isToggleFilter;
   }
 
   onClickCard(id: string) {

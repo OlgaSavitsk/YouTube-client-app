@@ -1,17 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { SortParam } from 'src/app/app.constants';
-import { SearchItem } from 'src/app/youtube/models/search-item.model';
-
-export interface IDesk {
-  date: boolean;
-  view: boolean;
-}
-
-export const sortDesk: IDesk = {
-  date: false,
-  view: false,
-};
+import { SearchItem } from '@youtube/models/search-item.model';
 
 @Pipe({
   name: 'sort',

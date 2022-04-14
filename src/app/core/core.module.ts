@@ -6,7 +6,7 @@ import HeaderControlsComponent from './components/header/header-controls/header-
 import LoginComponent from './components/header/login/login.component';
 import FooterComponent from './components/footer/footer.component';
 import NotFoundComponent from './pages/not-found/not-found.component';
-import { ToggleService } from './services/toggle.service';
+//import { ToggleService } from './services/toggle.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,6 @@ import { ToggleService } from './services/toggle.service';
     FooterComponent,
     NotFoundComponent,
   ],
-  providers: [ToggleService],
+  //providers: [ToggleService],
 })
 export default class CoreModule {}

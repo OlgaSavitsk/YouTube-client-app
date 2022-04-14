@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '@auth/models/user.model';
-
 import LocalstorageService from '@core/services/localstorage.service';
 import { STORAGE_NAME } from 'src/app/app.constants';
 
@@ -27,7 +26,7 @@ export default class AuthService {
 
   userAuthCheck(): IUser | undefined {
     const currentUser = this.storageService.getStorageData();
-    this.username = currentUser;
+     this.username = currentUser;
     return currentUser;
   }
 
