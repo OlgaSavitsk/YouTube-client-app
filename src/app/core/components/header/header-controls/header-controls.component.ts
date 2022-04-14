@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter, Subject } from 'rxjs';
 
 import YoutubeService from '@youtube/services/youtube.service';
 
@@ -8,16 +9,28 @@ import YoutubeService from '@youtube/services/youtube.service';
   styleUrls: ['./header-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class HeaderControlsComponent {
+export default class HeaderControlsComponent implements OnInit {
   isToggleFilter: boolean = false;
-  isToggleResult: boolean = false;
+  searchValue: string = '';
+  private searchValueUpdate$$ = new Subject<string>();
+  public searchValueUpdate$ = this.searchValueUpdate$$.asObservable();
 
   constructor(private youtubeService: YoutubeService) {}
 
-  onToggleResult(e: Event): void {
-    e.preventDefault();
-    this.isToggleResult = !this.isToggleResult;
-    this.youtubeService.isToggleSearchResult = this.isToggleResult;
+  ngOnInit(): void {
+    this.searchValueUpdate$$
+      .pipe(
+        filter((value) => value.length >= 2),
+        debounceTime(700),
+        distinctUntilChanged(),
+      )
+      .subscribe((val) => {
+        console.log(val);
+      });
+  }
+
+  setSearchResult(value: string): void {
+    this.searchValueUpdate$$.next(value);
   }
 
   onToggleFilter(): void {

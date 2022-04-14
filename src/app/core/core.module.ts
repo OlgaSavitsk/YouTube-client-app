@@ -6,6 +6,7 @@ import HeaderControlsComponent from './components/header/header-controls/header-
 import LoginComponent from './components/header/login/login.component';
 import FooterComponent from './components/footer/footer.component';
 import NotFoundComponent from './pages/not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import NotFoundComponent from './pages/not-found/not-found.component';
     FooterComponent,
     NotFoundComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [
     HeaderComponent,
     LoginComponent,

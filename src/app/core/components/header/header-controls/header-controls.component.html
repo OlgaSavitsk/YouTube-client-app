@@ -3,10 +3,8 @@
         <img src="assets/icons/logo.svg" alt="logo">
     </div>
     <form class="search-box">
-        <input type="text" name="text" class="search-input" placeholder="Search..">
-        <button class="search-button" (click)="onToggleResult($event)">
-            search
-        </button>
+        <input type="text" name="text" class="search-input" placeholder="Search.." [(ngModel)]="searchValue"
+            (ngModelChange)="setSearchResult(searchValue)">
     </form>
     <button class="setting-button" (click)="onToggleFilter()">
         <img src="assets/icons/settings.svg">
