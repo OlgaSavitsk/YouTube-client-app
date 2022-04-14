@@ -1,5 +1,10 @@
 <div class="login">
     <p>{{ username }}</p>
     <img class="login__avatar" src="assets/icons/login.svg" alt="avatar">
-    <button *ngIf="isLogged" class="login__button" (click)="logOut()">Log out</button>
+    <button *ngIf="(authService.isLogged$ | async); else logIn" class="login__button" (click)="logOut()">Log
+        out</button>
 </div>
+
+<ng-template #logIn>
+    <button class="login__button">Log in</button>
+</ng-template>

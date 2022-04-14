@@ -12,14 +12,12 @@ import { defaultUserName, Paths } from 'src/app/app.constants';
 })
 export default class LoginComponent {
   @Input() username: string | undefined;
-  @Input() isLogged: boolean | undefined;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   logOut(): void {
     this.router.navigate([Paths.toLoginPage]);
     this.authService.logout();
     this.username = defaultUserName;
-    this.isLogged = false;
   }
 }

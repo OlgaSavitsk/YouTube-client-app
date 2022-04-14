@@ -27,7 +27,6 @@ export default class HeaderComponent implements DoCheck {
     if (this.authService.userAuthCheck()) {
       this.changeDetectorRef.markForCheck();
       this.username = this.authService.userAuthCheck()?.login;
-      this.isLogged = this.authService.userAuthCheck()?.isLogged;
     }
   }
 }
