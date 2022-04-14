@@ -29,11 +29,7 @@ export default class AuthPageComponent implements OnInit {
     }
     const login: string = this.formGroup.value.login.trim();
     const { token } = defaultParams;
-    this.authService.login(login, token);
+    this.authService.login(login, token!);
     this.router.navigate([Paths.toSearchPage]);
-  }
-
-  toggleLogOut(): void {
-    this.authService.userAuthCheck();
   }
 }

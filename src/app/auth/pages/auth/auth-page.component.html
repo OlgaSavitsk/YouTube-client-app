@@ -1,19 +1,19 @@
 <div class="container">
-    <form class="example-form form" [formGroup]="formGroup">
+    <form class="example-form form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <h2>LOGIN</h2>
         <div class="form__container">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Login</mat-label>
-                <input matInput class="form__input" type="text" placeholder="Enter your name" formControlName="login">
+                <input matInput class="form__input" type="text" placeholder="Enter your name" formControlName="login"
+                    autocomplete="off">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Password</mat-label>
                 <input matInput class="form__input" type="password" placeholder="Enter password"
-                    formControlName="password">
+                    formControlName="password" autocomplete="off">
             </mat-form-field>
         </div>
-        <button mat-flat-button color="primary" class="form__button" [disabled]="formGroup.invalid"
-            (click)="onSubmit()">Login</button>
+        <button mat-flat-button color="primary" class="form__button" [disabled]="formGroup.invalid">Login</button>
     </form>
 </div>
