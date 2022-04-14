@@ -14,6 +14,6 @@ export default class SortByWordsButtonComponent {
   constructor(private youtubeService: YoutubeService) {}
 
   inputValue(searchInputValue: string) {
-    this.youtubeService.sorBytWord(searchInputValue);
+    this.youtubeService.filterByWord(searchInputValue);
   }
 }

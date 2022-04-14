@@ -22,7 +22,7 @@ export default class CardDetailsPageComponent implements OnInit {
 
   ngOnInit() {
     const { id } = this.route.snapshot.params;
-    this.item = this.youtubeService.onSelectCard(id);
+    this.item = this.youtubeService.onClickCard(id);
   }
 
   getDateDiff(publishedAt: string): number {

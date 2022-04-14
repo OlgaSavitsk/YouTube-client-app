@@ -1,20 +1,33 @@
-import { Component, DoCheck } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+} from '@angular/core';
 
 import AuthService from '@auth/services/auth.service';
+import { defaultUserName } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class HeaderComponent implements DoCheck {
-  username: string | undefined;
+  username: string | undefined = defaultUserName;
   isLogged: boolean | undefined;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {}
 
   ngDoCheck(): void {
-    this.username = this.authService.username.login;
-    this.isLogged = this.authService.username.isLogged;
+    if (this.authService.userAuthCheck()) {
+      this.changeDetectorRef.markForCheck();
+      this.username = this.authService.userAuthCheck()?.login;
+      this.isLogged = this.authService.userAuthCheck()?.isLogged;
+    }
   }
 }

@@ -26,8 +26,8 @@ export default class SearchResultPageComponent implements DoCheck {
   ) {}
 
   ngDoCheck(): void {
-    this.isToggleResult = this.toggleService.toggleSearchResult;
-    this.isToggleFilter = this.toggleService.toggleFilter;
+    this.isToggleResult = this.toggleService.searchResult;
+    this.isToggleFilter = this.toggleService.filter;
     this.isDeskSortDate = this.youtubeService.isDeskSortDate;
     this.isDeskSortView = this.youtubeService.isDeskSortView;
     this.searchInputValue = this.youtubeService.searchInputValue;

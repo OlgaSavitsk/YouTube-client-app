@@ -6,13 +6,13 @@ import NotFoundComponent from '@core/pages/not-found/not-found.component';
 import { Paths } from './app.constants';
 
 const routes: Routes = [
-  { path: '', redirectTo: Paths.login, pathMatch: 'full' },
+  { path: '', redirectTo: Paths.toLoginPage, pathMatch: 'full' },
   {
-    path: Paths.login,
+    path: Paths.toLoginPage,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: Paths.search,
+    path: Paths.toSearchPage,
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canLoad: [AuthGuard],
   },

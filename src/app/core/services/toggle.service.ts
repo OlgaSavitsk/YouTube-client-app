@@ -16,19 +16,19 @@ export class ToggleService {
 
   constructor() {}
 
-  set toggleSearchResult(val: boolean) {
+  set searchResult(val: boolean) {
     toggleOptions.search = val;
   }
 
-  get toggleSearchResult(): boolean {
+  get searchResult(): boolean {
     return toggleOptions.search;
   }
 
-  set toggleFilter(val: boolean) {
+  set filter(val: boolean) {
     toggleOptions.filter = val;
   }
 
-  get toggleFilter(): boolean {
+  get filter(): boolean {
     return toggleOptions.filter;
   }
 }

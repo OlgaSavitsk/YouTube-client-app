@@ -15,20 +15,20 @@ export default class YoutubeService {
   sortByDate(): void {
     sortDesk.date = !sortDesk.date;
     this.isDeskSortDate = sortDesk.date;
-    this.sortParam = SortParam.date;
+    this.sortParam = SortParam.dateParam;
   }
 
   sortByViews(): void {
     sortDesk.view = !sortDesk.view;
     this.isDeskSortView = sortDesk.view;
-    this.sortParam = SortParam.view;
+    this.sortParam = SortParam.viewParam;
   }
 
-  sorBytWord(str: string): void {
+  filterByWord(str: string): void {
     this.searchInputValue = str;
   }
 
-  onSelectCard(id: string) {
+  onClickCard(id: string) {
     return this.searchItems.find((item) => id === item.id);
   }
 }

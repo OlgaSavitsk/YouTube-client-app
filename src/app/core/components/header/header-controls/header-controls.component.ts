@@ -17,11 +17,11 @@ export default class HeaderControlsComponent {
   onToggleResult(e: Event): void {
     e.preventDefault();
     this.isToggleResult = !this.isToggleResult;
-    this.toggleService.toggleSearchResult = this.isToggleResult;
+    this.toggleService.searchResult= this.isToggleResult;
   }
 
   onToggleFilter(): void {
     this.isToggleFilter = !this.isToggleFilter;
-    this.toggleService.toggleFilter = this.isToggleFilter;
+    this.toggleService.filter = this.isToggleFilter;
   }
 }

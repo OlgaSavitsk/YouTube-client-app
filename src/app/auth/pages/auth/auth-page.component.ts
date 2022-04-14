@@ -13,12 +13,8 @@ import { defaultParams, Paths } from 'src/app/app.constants';
 })
 export default class AuthPageComponent implements OnInit {
   formGroup!: FormGroup;
-  isLog: boolean = false;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -32,12 +28,12 @@ export default class AuthPageComponent implements OnInit {
       return;
     }
     const login: string = this.formGroup.value.login.trim();
-    const token: string = defaultParams.token;
+    const { token } = defaultParams;
     this.authService.login(login, token);
-    this.router.navigate([Paths.search]);
+    this.router.navigate([Paths.toSearchPage]);
   }
 
   toggleLogOut(): void {
-    this.authService.isLoggedIn();
+    this.authService.userAuthCheck();
   }
 }

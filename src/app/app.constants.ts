@@ -17,8 +17,8 @@ export enum BorderColor {
 }
 
 export enum SortParam {
-  date = 'date',
-  view = 'view',
+  dateParam = 'date',
+  viewParam = 'view',
 }
 
 export const defaultUserName = "Your name"
@@ -31,8 +31,8 @@ export const defaultParams: IUser = {
 
 export const STORAGE_NAME = 'userDate';
 export const enum Paths {
-  login = 'login',
-  search = 'search'
+  toLoginPage = 'login',
+  toSearchPage = 'search'
 }
 
 export const SEARCH_ITEM: SearchResponse = {

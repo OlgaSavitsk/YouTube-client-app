@@ -23,10 +23,10 @@ export default class SortPipe implements PipeTransform {
     isDeskDate: boolean | undefined,
     isDeskView: boolean | undefined,
   ): SearchItem[] {
-    if (param === SortParam.date) {
+    if (param === SortParam.dateParam) {
       this.sort(value, isDeskDate, this.sortByDate);
     }
-    if (param === SortParam.view) {
+    if (param === SortParam.viewParam) {
       this.sort(value, isDeskView, this.sortByView);
     }
     return value;

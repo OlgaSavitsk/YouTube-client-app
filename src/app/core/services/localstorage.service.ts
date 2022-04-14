@@ -4,7 +4,9 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { IUser } from '@auth/models/user.model';
 import { defaultParams } from 'src/app/app.constants';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export default class LocalstorageService {
   private usedLocalStorage: Storage | undefined;
   currentUser: IUser | undefined;
@@ -43,8 +45,9 @@ export default class LocalstorageService {
     return this.currentUser;
   }
 
-  setStorageData(data: IUser): void {
+  setStorageData(data: IUser, storageName: string): void {
     this.currentUser = data;
+    this.saveToStorage(storageName);
   }
 
   saveToStorage(storageName: string): void {
