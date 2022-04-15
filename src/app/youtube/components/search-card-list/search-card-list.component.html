@@ -1,3 +1,4 @@
-<app-search-card *ngFor="let item of items | sort: sortParam: isDeskDate: isDeskView | filter: searchWord"
+<app-search-card
+    *ngFor="let item of items | sort: sortParam: isDeskDate: isDeskView | filter: filterWord"
     [item]="item">
 </app-search-card>

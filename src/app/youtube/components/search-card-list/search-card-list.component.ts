@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
+import { SearchResultStateService } from '@youtube/services/search-result-state.service';
 import { SearchItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
@@ -10,11 +11,10 @@ import { SearchItem } from 'src/app/youtube/models/search-item.model';
 })
 export default class SearchCardListComponent {
   @Input() items: SearchItem[] = [];
-  @Input() isToggleResult!: boolean;
   @Input() isDeskDate: boolean | undefined;
   @Input() isDeskView: boolean | undefined;
   @Input() sortParam: string | undefined;
-  @Input() searchWord!: string;
+  @Input() filterWord!: string;
 
-  constructor() {}
+  constructor(public httpStateServive: SearchResultStateService) {}
 }

@@ -16,7 +16,6 @@ import { defaultUserName } from 'src/app/app.constants';
 })
 export default class HeaderComponent implements DoCheck {
   username: string | undefined = defaultUserName;
-  isLogged: boolean | undefined;
 
   constructor(
     private authService: AuthService,
@@ -26,7 +25,8 @@ export default class HeaderComponent implements DoCheck {
   ngDoCheck(): void {
     if (this.authService.userAuthCheck()) {
       this.changeDetectorRef.markForCheck();
-      this.username = this.authService.userAuthCheck()?.login;
+      const { login } = this.authService.userAuthCheck()!;
+      this.username = login;
     }
   }
 }

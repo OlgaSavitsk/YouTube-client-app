@@ -3,10 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 const environment = {
-  production: false
+  production: false,
+  BASE_URL: 'https://youtube.googleapis.com/youtube/v3',
+  API_KEY: 'AIzaSyBVYVdX4PA9VWhmz3daKEvZhpC2UZaOip8',
 };
 
-export default environment
+export default environment;
 
 /*
  * For easier debugging in development mode, you can import the following file

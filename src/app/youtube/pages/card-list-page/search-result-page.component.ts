@@ -4,9 +4,9 @@ import {
   Component,
   DoCheck,
 } from '@angular/core';
+import { SearchResultStateService } from '@youtube/services/search-result-state.service';
 
 import YoutubeService from '@youtube/services/youtube.service';
-import { SEARCH_ITEM } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-card-result-page',
@@ -17,8 +17,7 @@ import { SEARCH_ITEM } from 'src/app/app.constants';
 export default class SearchResultPageComponent implements DoCheck {
   isToggleFilter!: boolean;
   isToggleResult!: boolean;
-  searchItems = SEARCH_ITEM.items;
-  searchInputValue: string = '';
+  filterValue: string = '';
   isDeskSortDate: boolean | undefined;
   isDeskSortView: boolean | undefined;
   sortParam: string | undefined;
@@ -26,6 +25,7 @@ export default class SearchResultPageComponent implements DoCheck {
   constructor(
     private youtubeService: YoutubeService,
     private changeDetectorRef: ChangeDetectorRef,
+    public httpStateService: SearchResultStateService,
   ) {}
 
   ngDoCheck(): void {
@@ -35,7 +35,7 @@ export default class SearchResultPageComponent implements DoCheck {
       this.isToggleFilter = this.youtubeService.filter;
       this.isDeskSortDate = this.youtubeService.isDeskSortDate;
       this.isDeskSortView = this.youtubeService.isDeskSortView;
-      this.searchInputValue = this.youtubeService.searchInputValue;
+      this.filterValue = this.youtubeService.filterValue;
       this.sortParam = this.youtubeService.sortParam;
     }
   }
