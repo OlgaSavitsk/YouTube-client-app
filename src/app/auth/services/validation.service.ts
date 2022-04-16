@@ -6,33 +6,8 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 
-interface IObjectKeys {
-  [key: string]: string;
-}
-
-interface IPassword extends IObjectKeys {
-  required: string;
-  minlength: string;
-  hasNumber: string;
-  hasCapitalCase: string;
-  hasSmallCase: string;
-  hasSpecialCharacters: string;
-}
-
-interface IEmail extends IObjectKeys {
-  required: string;
-  email: string;
-}
-
-interface IValidationMessage {
-  login: IEmail;
-  password: IPassword;
-}
-
-interface IFormError extends IObjectKeys {
-  login: string;
-  password: string;
-}
+import { IFormError, IValidationMessage } from '@shared/models/form-error.model';
+import DateService from '@youtube/services/date.service';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +16,11 @@ export class ValidationService {
   formErrors: IFormError = {
     login: '',
     password: '',
+    title: '',
+    description: '',
+    img: '',
+    videoLink: '',
+    date: '',
   };
 
   validationMessage: IValidationMessage = {
@@ -57,12 +37,32 @@ export class ValidationService {
       hasSpecialCharacters:
         'inclusion of at least one special character, e.g., ! @ # ? ]',
     },
+    title: {
+      required: 'Please enter a title',
+      minlength: 'The title is too short',
+      maxlength: 'The title is too long',
+    },
+    description: {
+      maxlength: 'The description is too long',
+    },
+    img: {
+      required: 'Please enter a link to the image',
+      checkUrl: 'The image link is invalid',
+    },
+    videoLink: {
+      required: 'Please enter a link to the video',
+      checkUrl: 'he video link is invalid',
+    },
+    date: {
+      required: 'Please enter a creation date',
+      checkDate: 'The date is invalid',
+    },
   };
 
-  constructor() {}
+  constructor(private dateService: DateService) {}
 
-  setValidationErrors(group: FormGroup) {
-    Object.keys(group.controls).forEach((key) => {
+  setValidationErrors(group: FormGroup): void {
+    Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);
       if (abstractControl instanceof FormGroup) {
         this.setValidationErrors(abstractControl);
@@ -73,21 +73,24 @@ export class ValidationService {
           !abstractControl.valid &&
           (abstractControl.touched || abstractControl.dirty)
         ) {
-          const messages = this.validationMessage[key as keyof IValidationMessage];
+          const messages = this.validationMessage[key];
           for (const error in abstractControl?.errors) {
-            this.formErrors[key] += ` ${messages[error]},`;
+            this.formErrors[key] += ` ${messages[error]}`;
           }
         }
       }
     });
   }
 
-  patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
+  patternValidator(regex: RegExp, error: ValidationErrors, date?: Date): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: ValidationErrors } | null => {
       if (!control.value) {
         return null;
       }
-      const valid = regex.test(control.value);
+      let valid = regex.test(control.value);
+      if (date) {
+        valid = this.dateService.getDateDiff(control.value) > 0;
+      }
       return valid ? null : error;
     };
   }

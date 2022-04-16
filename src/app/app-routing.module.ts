@@ -6,7 +6,7 @@ import NotFoundComponent from '@core/pages/not-found/not-found.component';
 import { Paths } from './app.constants';
 
 const routes: Routes = [
-  { path: '', redirectTo: Paths.toLoginPage, pathMatch: 'full' },
+  { path: '', redirectTo: 'admin' /* Paths.toLoginPage */, pathMatch: 'full' },
   {
     path: Paths.toLoginPage,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
@@ -14,6 +14,11 @@ const routes: Routes = [
   {
     path: Paths.toSearchPage,
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    canLoad: [AuthGuard],
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
     canLoad: [AuthGuard],
   },
   {
