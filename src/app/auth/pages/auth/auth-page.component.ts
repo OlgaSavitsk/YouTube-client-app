@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import AuthService from '@auth/services/auth.service';
+import { ValidationService } from '@auth/services/validation.service';
 import { defaultParams, Paths } from 'src/app/app.constants';
 
 @Component({
@@ -14,12 +15,28 @@ import { defaultParams, Paths } from 'src/app/app.constants';
 export default class AuthPageComponent implements OnInit {
   formGroup!: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    public validationService: ValidationService,
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
-      login: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        this.validationService.patternValidator(/\d/, { hasNumber: true }),
+        this.validationService.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+        this.validationService.patternValidator(/[a-z]/, { hasSmallCase: true }),
+        this.validationService.patternValidator(/[!@#$%^&*()_+-=[{};':"|,.<>\]]/, {
+          hasSpecialCharacters: true,
+        }),
+      ]),
+    });
+    this.formGroup.valueChanges.subscribe((data) => {
+      this.validationService.setValidationErrors(this.formGroup);
     });
   }
 
