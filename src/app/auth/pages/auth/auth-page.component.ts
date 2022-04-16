@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -27,15 +27,16 @@ export default class AuthPageComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        this.validationService.patternValidator(/\d/, { hasNumber: true }),
+        this.validationService.patternValidator(/[0-9]/, { hasNumber: true }),
         this.validationService.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
         this.validationService.patternValidator(/[a-z]/, { hasSmallCase: true }),
-        this.validationService.patternValidator(/[!@#$%^&*()_+-=[{};':"|,.<>\]]/, {
+        /* eslint-disable no-useless-escape */
+        this.validationService.patternValidator(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/, {
           hasSpecialCharacters: true,
         }),
       ]),
     });
-    this.formGroup.valueChanges.subscribe((data) => {
+    this.formGroup.valueChanges.subscribe(() => {
       this.validationService.setValidationErrors(this.formGroup);
     });
   }
@@ -47,6 +48,6 @@ export default class AuthPageComponent implements OnInit {
     const login: string = this.formGroup.value.login.trim();
     const { token } = defaultParams;
     this.authService.login(login, token!);
-    this.router.navigate([Paths.toSearchPage]);
+    this.router.navigate([Paths.toAdmin]);
   }
 }

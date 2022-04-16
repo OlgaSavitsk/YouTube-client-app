@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
         ),
       ]),
     });
-    this.formGroup.valueChanges.subscribe((data) => {
+    this.formGroup.valueChanges.subscribe(() => {
       this.validationService.setValidationErrors(this.formGroup);
     });
   }

@@ -14,22 +14,22 @@ import DateService from '@youtube/services/date.service';
 })
 export class ValidationService {
   formErrors: IFormError = {
-    login: '',
-    password: '',
-    title: '',
+    login: 'Please enter a login email',
+    password: 'Please enter a password',
+    title: 'Please enter a title',
     description: '',
-    img: '',
-    videoLink: '',
-    date: '',
+    img: 'Please enter a link to the image',
+    videoLink: 'Please enter a link to the video',
+    date: 'Please enter a creation date',
   };
 
   validationMessage: IValidationMessage = {
     login: {
-      required: 'Please enter a login email',
+      required: this.formErrors.login,
       email: 'The login email is invalid',
     },
     password: {
-      required: 'Please enter a password',
+      required: this.formErrors.password,
       minlength: 'at least 8 characters',
       hasNumber: 'a mixture of letters and numbers',
       hasCapitalCase: 'a mixture of both uppercase and lowercase letters',
@@ -38,7 +38,7 @@ export class ValidationService {
         'inclusion of at least one special character, e.g., ! @ # ? ]',
     },
     title: {
-      required: 'Please enter a title',
+      required: this.formErrors.title,
       minlength: 'The title is too short',
       maxlength: 'The title is too long',
     },
@@ -46,15 +46,15 @@ export class ValidationService {
       maxlength: 'The description is too long',
     },
     img: {
-      required: 'Please enter a link to the image',
+      required: this.formErrors.img,
       checkUrl: 'The image link is invalid',
     },
     videoLink: {
-      required: 'Please enter a link to the video',
+      required: this.formErrors.videoLink,
       checkUrl: 'he video link is invalid',
     },
     date: {
-      required: 'Please enter a creation date',
+      required: this.formErrors.date,
       checkDate: 'The date is invalid',
     },
   };
@@ -74,9 +74,9 @@ export class ValidationService {
           (abstractControl.touched || abstractControl.dirty)
         ) {
           const messages = this.validationMessage[key];
-          for (const error in abstractControl?.errors) {
-            this.formErrors[key] += ` ${messages[error]}`;
-          }
+          Object.keys(abstractControl.errors!).forEach((error: string) => {
+            this.formErrors[key] = this.formErrors[key].concat(messages[error]);
+          });
         }
       }
     });

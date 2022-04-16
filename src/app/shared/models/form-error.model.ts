@@ -45,7 +45,7 @@ export interface IValidationMessage extends IObjectKeys {
 
 export interface IFormError extends IObjectKey {
   login: string;
-  password: string;
+  password: any;
   title: string;
   description: string;
   img: string;
