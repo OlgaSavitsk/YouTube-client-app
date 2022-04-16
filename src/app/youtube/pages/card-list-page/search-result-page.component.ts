@@ -4,8 +4,8 @@ import {
   Component,
   DoCheck,
 } from '@angular/core';
-import { SearchResultStateService } from '@youtube/services/search-result-state.service';
 
+import { SearchResultStateService } from '@youtube/services/search-result-state.service';
 import YoutubeService from '@youtube/services/youtube.service';
 
 @Component({

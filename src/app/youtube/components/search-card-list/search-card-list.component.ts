@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { SearchResultStateService } from '@youtube/services/search-result-state.service';
-import { SearchItem } from 'src/app/youtube/models/search-item.model';
+import { SearchItem } from '@youtube/models/search-item.model';
 
 @Component({
   selector: 'app-search-card-list',
@@ -16,5 +15,5 @@ export default class SearchCardListComponent {
   @Input() sortParam: string | undefined;
   @Input() filterWord!: string;
 
-  constructor(public httpStateServive: SearchResultStateService) {}
+  constructor() {}
 }

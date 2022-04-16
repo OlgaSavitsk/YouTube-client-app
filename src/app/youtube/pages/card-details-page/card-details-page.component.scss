@@ -1,60 +1,65 @@
 .details {
-    max-width: 1200px;
-    width: 100%;
-    margin: 44px auto;
+  max-width: 1200px;
+  width: 100%;
+  margin: 44px auto;
+  display: flex;
+  background: #e5e5e5;
+  box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.25);
+  border-radius: 0px 5px 5px 0px;
+  border-bottom: 5px solid;
+
+  &__image {
+    max-width: 729px;
+  }
+
+  &__description {
     display: flex;
-    background: #E5E5E5;
-    box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.25);
-    border-radius: 0px 5px 5px 0px;
+    flex-wrap: wrap;
+    padding: 10px 35px;
+  }
 
-    &__image {
-        max-width: 729px;
-    }
+  &__date {
+    font-size: 12px;
+    text-align: left;
+    padding-top: 7px;
+    color: #828282;
+  }
 
-    &__description {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 10px 35px;
-    }
+  &__title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+    color: #000000;
+  }
 
-    &__date {
-        font-size: 12px;
-        text-align: left;
-        padding-top: 7px;
-        color: #828282;
-    }
+  &__subtitle {
+    font-size: 14px;
+    text-align: left;
+  }
 
-    &__title {
-        text-align: left;
-        font-weight: bold;
-        font-size: 24px;
-        color: #000000
-    }
-
-    &__subtitle {
-        font-size: 14px;
-        text-align: left;
-    }
-
-    &__button_back {
-        border: none;
-        display: flex;
-        padding: 0;
-        cursor: pointer;
-    }
+  &__button_back {
+    display: flex;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+  }
 }
 
 .material-icons {
-    font-size: 19px;
-    margin: 0 5px;
+  font-size: 19px;
+  margin: 0 5px;
 }
 
 mat-card-content {
-    display: flex;
-    align-self: flex-end;
-    max-width: 300px;
+  display: flex;
+  align-self: flex-end;
+  max-width: 300px;
 }
 
 .mat-card-subtitle {
-    margin: 0px;
+  margin: 0px;
 }

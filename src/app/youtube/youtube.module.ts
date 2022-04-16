@@ -15,10 +15,12 @@ import SortPipe from './pipes/sort.pipe';
 import DateService from './services/date.service';
 import YoutubeRoutingModule from './youtube-routing.module';
 import SearchResultPageComponent from './pages/card-list-page/search-result-page.component';
+import HighlightButtonDirective from './directives/highlight-button.directive';
 
 @NgModule({
   declarations: [
     HighlightDirective,
+    HighlightButtonDirective,
     SortPipe,
     FilterPipe,
     SearchCardListComponent,

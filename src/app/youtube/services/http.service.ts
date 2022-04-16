@@ -14,6 +14,12 @@ import { map, Observable, switchMap } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpService {
+  paramsValue = {
+    snippetParam: 'snippet',
+    statisticsParam: 'statistics',
+    maxAmount: '10',
+    typeRequest: 'video',
+  };
   constructor(private http: HttpClient) {}
 
   getItems(searchValue: string): Observable<SearchItem[]> {
@@ -28,17 +34,16 @@ export class HttpService {
 
   private getYotubeData(searchValue: string): Observable<any> {
     const params = new HttpParams()
-      .set('part', 'snippet')
-      .set('maxResult', '10')
+      .set('part', this.paramsValue.snippetParam)
+      .set('maxResult', this.paramsValue.maxAmount)
       .set('q', searchValue)
-      .set('type', 'video');
-      console.log(typeof this.http.get<SearchResponse>(SEARCH_URL, { params }))
+      .set('type', this.paramsValue.typeRequest);
     return this.http.get<SearchResponse>(SEARCH_URL, { params });
   }
 
   private getYoutubeDataWithStat(searchResultIds: string): Observable<any> {
     const params = new HttpParams()
-      .set('part', 'snippet,statistics')
+      .set('part', `${this.paramsValue.snippetParam},${this.paramsValue.statisticsParam}`)
       .set('id', searchResultIds);
     return this.http.get<SearchResponse>(STATISTICS_URL, { params });
   }

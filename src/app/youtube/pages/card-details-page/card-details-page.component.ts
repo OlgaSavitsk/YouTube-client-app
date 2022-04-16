@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { SearchItem } from '@youtube/models/search-item.model';
 import DateService from '@youtube/services/date.service';
-import YoutubeService from '@youtube/services/youtube.service';
+import { SearchResultStateService } from '@youtube/services/search-result-state.service';
 
 @Component({
   selector: 'app-card-details-page',
@@ -11,21 +12,51 @@ import YoutubeService from '@youtube/services/youtube.service';
   styleUrls: ['./card-details-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CardDetailsPageComponent implements OnInit {
+export default class CardDetailsPageComponent implements OnInit, OnDestroy {
   item: SearchItem | undefined;
+  subscription: Subscription | undefined;
+  itemImageUrl!: string;
+  itemTitle!: string;
 
   constructor(
     private dateService: DateService,
     private route: ActivatedRoute,
-    private youtubeService: YoutubeService,
+    public searchStateService: SearchResultStateService,
   ) {}
 
   ngOnInit() {
     const { id } = this.route.snapshot.params;
-    this.item = this.youtubeService.onClickCard(id);
+    this.searchStateService.get(id);
+    this.subscription = this.searchStateService.item$.subscribe(
+      (item: SearchItem | null) => {
+        this.item = item!;
+      },
+    );
+    if (this.item) {
+      const {
+        snippet: {
+          thumbnails: {
+            medium: { url: urlValue },
+          },
+        },
+      } = this.item;
+      this.itemImageUrl = urlValue;
+      const {
+        snippet: {
+          localized: { title: titleValue },
+        },
+      } = this.item;
+      this.itemTitle = titleValue;
+    }
   }
 
   getDateDiff(publishedAt: string): number {
     return this.dateService.getDateDiff(publishedAt);
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

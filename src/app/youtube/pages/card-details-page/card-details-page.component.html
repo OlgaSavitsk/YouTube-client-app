@@ -1,14 +1,14 @@
-<div class="details" *ngIf="item">
-    <button class="details__button_back">
+<div class="details" *ngIf="item" [appHighlight]="getDateDiff(item.snippet.publishedAt)">
+    <button class="details__button_back" [appHighlightButton]="getDateDiff(item.snippet.publishedAt)">
         <a routerLink="/search" routerLinkActive="active">
             <img src="assets/icons/back-button.svg" alt="">
         </a>
     </button>
     <div class="details__image">
-        <img src="{{item.snippet.thumbnails.standard.url}}">
+        <img src="{{itemImageUrl}}">
     </div>
     <div class="details__description">
-        <h2 class="details__title">{{ item.snippet.localized.title }}</h2>
+        <h2 class="details__title">{{ itemTitle }}</h2>
         <span class="details__date">{{item.snippet.publishedAt | date: 'EEEE, MMMM d, y'}}</span>
 
         <div class="text-block">

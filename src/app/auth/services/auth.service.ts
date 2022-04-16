@@ -30,8 +30,8 @@ export default class AuthService {
 
   userAuthCheck(): IUser | undefined {
     const currentUser = this.storageService.getStorageData();
-    this.username = {...currentUser!};
-    this.isLogged$$.next(this.username.isLogged)
+    this.username = { ...currentUser! };
+    this.isLogged$$.next(this.username.isLogged);
     return this.username;
   }
 
