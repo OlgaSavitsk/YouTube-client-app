@@ -32,7 +32,7 @@ export class HttpService {
     );
   }
 
-  private getYotubeData(searchValue: string): Observable<any> {
+  private getYotubeData(searchValue: string): Observable<SearchResponse> {
     const params = new HttpParams()
       .set('part', this.paramsValue.snippetParam)
       .set('maxResult', this.paramsValue.maxAmount)
@@ -41,7 +41,7 @@ export class HttpService {
     return this.http.get<SearchResponse>(SEARCH_URL, { params });
   }
 
-  private getYoutubeDataWithStat(searchResultIds: string): Observable<any> {
+  private getYoutubeDataWithStat(searchResultIds: string): Observable<SearchResponse> {
     const params = new HttpParams()
       .set('part', `${this.paramsValue.snippetParam},${this.paramsValue.statisticsParam}`)
       .set('id', searchResultIds);
