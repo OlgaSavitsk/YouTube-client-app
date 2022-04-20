@@ -1,0 +1,45 @@
+<div class="container">
+  <form class="example-form form" [formGroup]="formGroup">
+    <h2>Create new card</h2>
+    <div class="form__container">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput class="form__input" type="text" autocomplete="off" formControlName="title">
+        <mat-error *ngIf="validationService.formErrors.title">{{validationService.formErrors.title}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput class="form__input" type="text" formControlName="description" autocomplete="off">
+        <mat-error *ngIf="validationService.formErrors.description">{{validationService.formErrors.description}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Img</mat-label>
+        <input matInput class="form__input" type="text" formControlName="img" autocomplete="off">
+        <mat-error *ngIf="validationService.formErrors.img">{{validationService.formErrors.img}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Link video</mat-label>
+        <input matInput class="form__input" type="text" formControlName="videoLink" autocomplete="off">
+        <mat-error *ngIf="validationService.formErrors.videoLink">{{validationService.formErrors.videoLink}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Create a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" autocomplete="off">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="validationService.formErrors.date">{{validationService.formErrors.date}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-flat-button color="primary" class="form__button" [disabled]="formGroup.invalid">Create card</button>
+  </form>
+</div>

@@ -16,8 +16,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        row-gap: 17px;
-        height: 100%;
+        row-gap: 10px;
     }
 
     &__input {
@@ -33,7 +32,6 @@
         align-self: self-end;
         width: 124px;
         height: 30px;
-        margin-top: 50px;
         background: #2F80ED;
         border-radius: 5px;
         font-size: 12px;

@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import AuthService from '@auth/services/auth.service';
-import { defaultUserName, Paths } from 'src/app/app.constants';
+import { defaultUserName, Path } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export default class LoginComponent {
   constructor(public authService: AuthService, private router: Router) {}
 
   logOut(): void {
-    this.router.navigate([Paths.toLoginPage]);
+    this.router.navigate([Path.loginPage]);
     this.authService.logout();
     this.username = defaultUserName;
   }

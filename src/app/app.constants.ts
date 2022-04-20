@@ -29,7 +29,8 @@ export const defaultParams: IUser = {
 };
 
 export const STORAGE_NAME = 'userDate';
-export const enum Paths {
-  toLoginPage = 'login',
-  toSearchPage = 'search'
+export const enum Path {
+  loginPage = 'login',
+  searchPage = 'search',
+  adminPage = 'admin'
 }

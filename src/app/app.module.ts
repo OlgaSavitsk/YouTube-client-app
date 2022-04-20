@@ -7,6 +7,7 @@ import { INTERCEPTOR_PROVIDERS } from '@core/interceptors/providers';
 import CoreModule from '@core/core.module';
 import AppComponent from './app.component';
 import AppRoutingModule from './app-routing.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import AppRoutingModule from './app-routing.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    AdminModule
   ],
   providers: [
     INTERCEPTOR_PROVIDERS

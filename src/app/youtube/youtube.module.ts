@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import SharedModule from '@shared/shared.module';
 import FilterComponent from './components/filter/filter.component';
@@ -12,7 +12,6 @@ import HighlightDirective from './directives/highlight.directive';
 import CardDetailsPageComponent from './pages/card-details-page/card-details-page.component';
 import FilterPipe from './pipes/filter.pipe';
 import SortPipe from './pipes/sort.pipe';
-import DateService from './services/date.service';
 import YoutubeRoutingModule from './youtube-routing.module';
 import SearchResultPageComponent from './pages/card-list-page/search-result-page.component';
 import HighlightButtonDirective from './directives/highlight-button.directive';
@@ -35,7 +34,6 @@ import HighlightButtonDirective from './directives/highlight-button.directive';
     CommonModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
     YoutubeRoutingModule,
   ],
   exports: [
@@ -44,6 +42,5 @@ import HighlightButtonDirective from './directives/highlight-button.directive';
     SearchResultPageComponent,
     CardDetailsPageComponent,
   ],
-  providers: [DateService],
 })
 export class YoutubeModule {}

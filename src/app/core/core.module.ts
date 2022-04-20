@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import HeaderComponent from './components/header/header.component';
 import HeaderControlsComponent from './components/header/header-controls/header-controls.component';
@@ -16,13 +16,13 @@ import NotFoundComponent from './pages/not-found/not-found.component';
     FooterComponent,
     NotFoundComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, HttpClientModule],
   exports: [
     HeaderComponent,
     LoginComponent,
     HeaderControlsComponent,
     FooterComponent,
     NotFoundComponent,
-  ]
+  ],
 })
 export default class CoreModule {}
