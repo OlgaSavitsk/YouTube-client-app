@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 import AuthService from '@auth/services/auth.service';
 import { ValidationService } from '@auth/services/validation.service';
 import { defaultParams, Path } from 'src/app/app.constants';
+import { DataErrorMessageService } from '@core/services/data-error-message.service';
+import { IValidationMessage } from '@shared/models/form-error.model';
 
 @Component({
   selector: 'app-auth-page',
@@ -15,12 +17,14 @@ import { defaultParams, Path } from 'src/app/app.constants';
 })
 export default class AuthPageComponent implements OnInit, OnDestroy {
   formGroup!: FormGroup;
-  subscription: Subscription | undefined;
+  private ngUnsubscribe = new Subject();
+  errorMessages!: IValidationMessage;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     public validationService: ValidationService,
+    private setErrorService: DataErrorMessageService,
   ) {}
 
   ngOnInit(): void {
@@ -41,8 +45,15 @@ export default class AuthPageComponent implements OnInit, OnDestroy {
         ),
       ]),
     });
-    this.subscription = this.formGroup.valueChanges.subscribe(() => {
-      this.validationService.setValidationErrors(this.formGroup);
+    this.setErrorService
+      .getErrorData()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: IValidationMessage[]) => {
+        [this.errorMessages] = data;
+        return this.errorMessages;
+      });
+    this.formGroup.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
+      this.validationService.setValidationErrors(this.formGroup, this.errorMessages);
     });
   }
 
@@ -57,8 +68,7 @@ export default class AuthPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.ngUnsubscribe.next('');
+    this.ngUnsubscribe.complete();
   }
 }

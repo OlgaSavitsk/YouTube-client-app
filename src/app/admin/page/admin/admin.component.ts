@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 import { ValidationService } from '@auth/services/validation.service';
+import { IValidationMessage } from '@shared/models/form-error.model';
+import { DataErrorMessageService } from '@core/services/data-error-message.service';
 
 @Component({
   selector: 'app-admin',
@@ -11,11 +13,15 @@ import { ValidationService } from '@auth/services/validation.service';
 })
 export class AdminComponent implements OnInit, OnDestroy {
   formGroup!: FormGroup;
+  private ngUnsubscribe = new Subject();
   regexUrl = /^http[s]?:\/\/(www\.)?(.*)?\/?(.)*/;
   regexDate = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-  subscription: Subscription | undefined;
+  errorMessages!: IValidationMessage;
 
-  constructor(public validationService: ValidationService) {}
+  constructor(
+    public validationService: ValidationService,
+    private setErrorService: DataErrorMessageService,
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -42,14 +48,20 @@ export class AdminComponent implements OnInit, OnDestroy {
         ),
       ]),
     });
-    this.subscription = this.formGroup.valueChanges.subscribe(() => {
-      this.validationService.setValidationErrors(this.formGroup);
+    this.setErrorService
+      .getErrorData()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: IValidationMessage[]) => {
+        [this.errorMessages] = data;
+        return this.errorMessages;
+      });
+    this.formGroup.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
+      this.validationService.setValidationErrors(this.formGroup, this.errorMessages);
     });
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.ngUnsubscribe.next('');
+    this.ngUnsubscribe.complete();
   }
 }

@@ -1,20 +1,18 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   AbstractControl,
   FormGroup,
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { IFormError, IValidationMessage } from '@shared/models/form-error.model';
 import DateService from '@youtube/services/date.service';
-import { DataErrorMessageService } from '@core/services/data-error-message.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ValidationService implements OnDestroy {
+export class ValidationService {
   formErrors: IFormError = {
     login: '',
     password: '',
@@ -25,24 +23,13 @@ export class ValidationService implements OnDestroy {
     date: '',
   };
 
-  errorData!: IValidationMessage;
-  subscription: Subscription;
+  constructor(private dateService: DateService) {}
 
-  constructor(
-    private dateService: DateService,
-    private setErrorService: DataErrorMessageService,
-  ) {
-    this.subscription = this.setErrorService.loadDataErrorMessage().subscribe((data) => {
-      [this.errorData] = data;
-      return this.errorData;
-    });
-  }
-
-  setValidationErrors(group: FormGroup): void {
+  setValidationErrors(group: FormGroup, messages: IValidationMessage): void {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);
       if (abstractControl instanceof FormGroup) {
-        this.setValidationErrors(abstractControl);
+        this.setValidationErrors(abstractControl, messages);
       } else {
         this.formErrors[key] = '';
         if (
@@ -50,9 +37,9 @@ export class ValidationService implements OnDestroy {
           !abstractControl.valid &&
           (abstractControl.touched || abstractControl.dirty)
         ) {
-          const messages = this.errorData[key];
+          const errorMessage = messages[key];
           Object.keys(abstractControl.errors!).forEach((error: string) => {
-            this.formErrors[key] = this.formErrors[key].concat(messages[error]);
+            this.formErrors[key] = this.formErrors[key].concat(errorMessage[error]);
           });
         }
       }
@@ -70,9 +57,5 @@ export class ValidationService implements OnDestroy {
       }
       return valid ? null : error;
     };
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }
