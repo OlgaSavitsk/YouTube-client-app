@@ -3,7 +3,7 @@ import { CanLoad, Router, UrlTree } from '@angular/router';
 import LocalstorageService from '@core/services/localstorage.service';
 import { Observable } from 'rxjs';
 
-import { Paths, STORAGE_NAME } from 'src/app/app.constants';
+import { Path, STORAGE_NAME } from 'src/app/app.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export default class AuthGuard implements CanLoad {
     if (this.storageService.getStorageItem(STORAGE_NAME)) {
       return true;
     }
-    this.router.navigate([`/${Paths.toLoginPage}`]);
+    this.router.navigate([`/${Path.loginPage}`]);
     return false;
   }
 }

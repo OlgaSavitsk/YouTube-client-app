@@ -1,65 +1,42 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
   FormGroup,
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { IFormError, IValidationMessage } from '@shared/models/form-error.model';
 import DateService from '@youtube/services/date.service';
+import { DataErrorMessageService } from '@core/services/data-error-message.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ValidationService {
+export class ValidationService implements OnDestroy {
   formErrors: IFormError = {
-    login: 'Please enter a login email',
-    password: 'Please enter a password',
-    title: 'Please enter a title',
+    login: '',
+    password: '',
+    title: '',
     description: '',
-    img: 'Please enter a link to the image',
-    videoLink: 'Please enter a link to the video',
-    date: 'Please enter a creation date',
+    img: '',
+    videoLink: '',
+    date: '',
   };
 
-  validationMessage: IValidationMessage = {
-    login: {
-      required: this.formErrors.login,
-      email: 'The login email is invalid',
-    },
-    password: {
-      required: this.formErrors.password,
-      minlength: 'at least 8 characters',
-      hasNumber: 'a mixture of letters and numbers',
-      hasCapitalCase: 'a mixture of both uppercase and lowercase letters',
-      hasSmallCase: 'a mixture of both uppercase and lowercase letters',
-      hasSpecialCharacters:
-        'inclusion of at least one special character, e.g., ! @ # ? ]',
-    },
-    title: {
-      required: this.formErrors.title,
-      minlength: 'The title is too short',
-      maxlength: 'The title is too long',
-    },
-    description: {
-      maxlength: 'The description is too long',
-    },
-    img: {
-      required: this.formErrors.img,
-      checkUrl: 'The image link is invalid',
-    },
-    videoLink: {
-      required: this.formErrors.videoLink,
-      checkUrl: 'he video link is invalid',
-    },
-    date: {
-      required: this.formErrors.date,
-      checkDate: 'The date is invalid',
-    },
-  };
+  errorData!: IValidationMessage;
+  subscription: Subscription;
 
-  constructor(private dateService: DateService) {}
+  constructor(
+    private dateService: DateService,
+    private setErrorService: DataErrorMessageService,
+  ) {
+    this.subscription = this.setErrorService.loadDataErrorMessage().subscribe((data) => {
+      [this.errorData] = data;
+      return this.errorData;
+    });
+  }
 
   setValidationErrors(group: FormGroup): void {
     Object.keys(group.controls).forEach((key: string) => {
@@ -73,7 +50,7 @@ export class ValidationService {
           !abstractControl.valid &&
           (abstractControl.touched || abstractControl.dirty)
         ) {
-          const messages = this.validationMessage[key];
+          const messages = this.errorData[key];
           Object.keys(abstractControl.errors!).forEach((error: string) => {
             this.formErrors[key] = this.formErrors[key].concat(messages[error]);
           });
@@ -82,7 +59,7 @@ export class ValidationService {
     });
   }
 
-  patternValidator(regex: RegExp, error: ValidationErrors, date?: Date): ValidatorFn {
+  checkValidation(regex: RegExp, error: ValidationErrors, date?: Date): ValidatorFn {
     return (control: AbstractControl): { [key: string]: ValidationErrors } | null => {
       if (!control.value) {
         return null;
@@ -93,5 +70,9 @@ export class ValidationService {
       }
       return valid ? null : error;
     };
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

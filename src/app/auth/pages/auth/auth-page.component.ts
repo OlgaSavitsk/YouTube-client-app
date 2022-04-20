@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import AuthService from '@auth/services/auth.service';
 import { ValidationService } from '@auth/services/validation.service';
-import { defaultParams, Paths } from 'src/app/app.constants';
+import { defaultParams, Path } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-auth-page',
@@ -12,8 +13,9 @@ import { defaultParams, Paths } from 'src/app/app.constants';
   styleUrls: ['./auth-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class AuthPageComponent implements OnInit {
+export default class AuthPageComponent implements OnInit, OnDestroy {
   formGroup!: FormGroup;
+  subscription: Subscription | undefined;
 
   constructor(
     private authService: AuthService,
@@ -27,16 +29,19 @@ export default class AuthPageComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        this.validationService.patternValidator(/[0-9]/, { hasNumber: true }),
-        this.validationService.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
-        this.validationService.patternValidator(/[a-z]/, { hasSmallCase: true }),
+        this.validationService.checkValidation(/[0-9]/, { hasNumber: true }),
+        this.validationService.checkValidation(/[A-Z]/, { hasCapitalCase: true }),
+        this.validationService.checkValidation(/[a-z]/, { hasSmallCase: true }),
         /* eslint-disable no-useless-escape */
-        this.validationService.patternValidator(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/, {
-          hasSpecialCharacters: true,
-        }),
+        this.validationService.checkValidation(
+          /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
+          {
+            hasSpecialCharacters: true,
+          },
+        ),
       ]),
     });
-    this.formGroup.valueChanges.subscribe(() => {
+    this.subscription = this.formGroup.valueChanges.subscribe(() => {
       this.validationService.setValidationErrors(this.formGroup);
     });
   }
@@ -48,6 +53,12 @@ export default class AuthPageComponent implements OnInit {
     const login: string = this.formGroup.value.login.trim();
     const { token } = defaultParams;
     this.authService.login(login, token!);
-    this.router.navigate([Paths.toAdmin]);
+    this.router.navigate([Path.adminPage]);
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
