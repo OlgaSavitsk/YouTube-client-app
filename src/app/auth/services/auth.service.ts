@@ -9,7 +9,7 @@ import { STORAGE_NAME } from 'src/app/app.constants';
   providedIn: 'root',
 })
 export default class AuthService {
-  username: IUser | undefined;
+  private username: IUser | undefined;
   private isLogged$$ = new BehaviorSubject<boolean>(false);
   public isLogged$ = this.isLogged$$.pipe();
 

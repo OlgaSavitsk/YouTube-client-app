@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { SearchItem } from '@youtube/models/search-item.model';
 
-import { SEARCH_ITEM, SortParam } from 'src/app/app.constants';
+import { SortParam } from 'src/app/app.constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export default class YoutubeService {
-  searchItems = SEARCH_ITEM.items;
   filterValue: string = '';
   isDeskSortDate: boolean | undefined = false;
   isDeskSortView: boolean | undefined = false;
@@ -47,7 +45,7 @@ export default class YoutubeService {
     return this.isToggleFilter;
   }
 
-  onClickCard(id: string): SearchItem | undefined {
+  /* onClickCard(id: string): SearchItem | undefined {
     return this.searchItems.find((item: SearchItem) => id === item.id);
-  }
+  } */
 }

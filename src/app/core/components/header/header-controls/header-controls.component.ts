@@ -38,6 +38,7 @@ export default class HeaderControlsComponent implements OnInit {
       )
       .subscribe((value) => {
         this.httpStateService.initData(value);
+        this.httpStateService.getSearchData();
         this.onToggleSearchResult(!!value);
       });
   }

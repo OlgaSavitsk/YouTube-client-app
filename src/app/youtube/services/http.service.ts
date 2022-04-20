@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable, switchMap } from 'rxjs';
 
 import {
   getYoutubeItemsIds,
@@ -8,18 +9,18 @@ import {
 } from '@youtube/constants/api-constants';
 import { SearchItem } from '@youtube/models/search-item.model';
 import { SearchResponse } from '@youtube/models/search-response.model';
-import { map, Observable, switchMap } from 'rxjs';
+
+const paramsValue = {
+  snippetParam: 'snippet',
+  statisticsParam: 'statistics',
+  maxAmount: '10',
+  typeRequest: 'video',
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  paramsValue = {
-    snippetParam: 'snippet',
-    statisticsParam: 'statistics',
-    maxAmount: '10',
-    typeRequest: 'video',
-  };
   constructor(private http: HttpClient) {}
 
   getItems(searchValue: string): Observable<SearchItem[]> {
@@ -34,16 +35,16 @@ export class HttpService {
 
   private getYotubeData(searchValue: string): Observable<SearchResponse> {
     const params = new HttpParams()
-      .set('part', this.paramsValue.snippetParam)
-      .set('maxResult', this.paramsValue.maxAmount)
+      .set('part', paramsValue.snippetParam)
+      .set('maxResult', paramsValue.maxAmount)
       .set('q', searchValue)
-      .set('type', this.paramsValue.typeRequest);
+      .set('type', paramsValue.typeRequest);
     return this.http.get<SearchResponse>(SEARCH_URL, { params });
   }
 
   private getYoutubeDataWithStat(searchResultIds: string): Observable<SearchResponse> {
     const params = new HttpParams()
-      .set('part', `${this.paramsValue.snippetParam},${this.paramsValue.statisticsParam}`)
+      .set('part', `${paramsValue.snippetParam},${paramsValue.statisticsParam}`)
       .set('id', searchResultIds);
     return this.http.get<SearchResponse>(STATISTICS_URL, { params });
   }

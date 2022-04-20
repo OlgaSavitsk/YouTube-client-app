@@ -26,7 +26,7 @@ export default class CardDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const { id } = this.route.snapshot.params;
-    this.searchStateService.get(id);
+    this.searchStateService.getSearchItem(id);
     this.subscription = this.searchStateService.item$.subscribe(
       (item: SearchItem | null) => {
         this.item = item!;
