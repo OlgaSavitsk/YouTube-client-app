@@ -16,18 +16,18 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "paths": {
       "@shared/*": ["src/app/shared/*"],
       "@core/*": ["src/app/core/*"],
       "@search/*": ["src/app/search/*"],
       "@youtube/*": ["src/app/youtube/*"],
-      "@auth/*": ["src/app/auth/*"]
+      "@auth/*": ["src/app/auth/*"],
+      "@admin/*": ["src/app/admin/*"]
     }
   },
   "angularCompilerOptions": {
@@ -35,5 +35,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
+  }
 }

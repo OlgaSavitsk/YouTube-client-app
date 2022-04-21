@@ -4,7 +4,7 @@
     </div>
     <form class="search-box">
         <input type="text" name="text" class="search-input" placeholder="Search.." [(ngModel)]="searchValue"
-            (ngModelChange)="setSearchResult(searchValue)" autocomplete="off">
+            (click)="goSearchPage()" (ngModelChange)="setSearchResult(searchValue)" autocomplete="off">
     </form>
     <button class="setting-button" (click)="onToggleFilter()">
         <img src="assets/icons/settings.svg">

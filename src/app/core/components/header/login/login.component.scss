@@ -1,24 +1,25 @@
 :host {
-    width: 14%;
+  width: 30%;
 }
 
 .login {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 7px;
 
-    &__avatar {
-        margin: 0 5px;
-    }
+  &__avatar {
+    margin: 0 5px;
+  }
 
-    &__button {
-        height: 25px;
-        margin: 0;
-        padding: 0 5px;
-        border: none;
-        border-radius: 5px;
-        background: #2F80ED;
-        color: #FFFFFF;
-        text-align: center;
-        cursor: pointer;
-    }
+  &__button {
+    height: 25px;
+    margin: 0;
+    padding: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background: #2f80ed;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+  }
 }

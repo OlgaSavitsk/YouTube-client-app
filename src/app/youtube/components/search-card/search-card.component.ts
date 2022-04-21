@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
 import { SearchItem } from '@youtube/models/search-item.model';
 import DateService from '@youtube/services/date.service';
+import { ICustomItem } from 'src/app/admin/models/custom-item.model';
 
 @Component({
   selector: 'app-search-card',
@@ -10,12 +11,14 @@ import DateService from '@youtube/services/date.service';
 })
 export default class SearchCardComponent implements OnInit {
   @Input() item!: SearchItem;
+  @Input() customItem!: ICustomItem;
   itemImageUrl: string | undefined;
   itemTitle: string | undefined;
 
   constructor(private dateService: DateService) {}
 
   ngOnInit(): void {
+    console.log(this.item);
     const {
       snippet: {
         thumbnails: {

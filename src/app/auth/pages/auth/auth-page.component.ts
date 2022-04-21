@@ -6,8 +6,8 @@ import { Subject, takeUntil } from 'rxjs';
 import AuthService from '@auth/services/auth.service';
 import { ValidationService } from '@auth/services/validation.service';
 import { defaultParams, Path } from 'src/app/app.constants';
-import { DataErrorMessageService } from '@core/services/data-error-message.service';
 import { IValidationMessage } from '@shared/models/form-error.model';
+import DataJson from 'src/assets/data-error-message.json';
 
 @Component({
   selector: 'app-auth-page',
@@ -24,8 +24,9 @@ export default class AuthPageComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     public validationService: ValidationService,
-    private setErrorService: DataErrorMessageService,
-  ) {}
+  ) {
+    [this.errorMessages] = DataJson;
+  }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -45,13 +46,6 @@ export default class AuthPageComponent implements OnInit, OnDestroy {
         ),
       ]),
     });
-    this.setErrorService
-      .getErrorData()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((data: IValidationMessage[]) => {
-        [this.errorMessages] = data;
-        return this.errorMessages;
-      });
     this.formGroup.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
       this.validationService.setValidationErrors(this.formGroup, this.errorMessages);
     });
@@ -67,7 +61,7 @@ export default class AuthPageComponent implements OnInit, OnDestroy {
     this.router.navigate([Path.adminPage]);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.ngUnsubscribe.next('');
     this.ngUnsubscribe.complete();
   }

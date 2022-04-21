@@ -1,27 +1,39 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { ValidationService } from '@auth/services/validation.service';
 import { IValidationMessage } from '@shared/models/form-error.model';
-import { DataErrorMessageService } from '@core/services/data-error-message.service';
+import { addCustomItem } from 'src/app/redux/actions/custom.actions';
+import { customSelector } from 'src/app/redux/selectors/custom.selector';
+import DateService from '@youtube/services/date.service';
+import DataJson from 'src/assets/data-error-message.json';
+import { ICustomItem } from '../../models/custom-item.model';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminComponent implements OnInit, OnDestroy {
+export default class AdminComponent implements OnInit, OnDestroy {
   formGroup!: FormGroup;
   private ngUnsubscribe = new Subject();
   regexUrl = /^http[s]?:\/\/(www\.)?(.*)?\/?(.)*/;
   regexDate = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
   errorMessages!: IValidationMessage;
 
+  customItems$ = this.store.select(customSelector);
+  item!: ICustomItem;
+
   constructor(
     public validationService: ValidationService,
-    private setErrorService: DataErrorMessageService,
-  ) {}
+    private store: Store,
+    private dateService: DateService,
+  ) {
+    [this.errorMessages] = DataJson;
+  }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -32,7 +44,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       ]),
       description: new FormControl('', [Validators.maxLength(255)]),
       img: new FormControl('', [
-        Validators.required,
+        /* Validators.required, */
         this.validationService.checkValidation(this.regexUrl, { checkUrl: true }),
       ]),
       videoLink: new FormControl('', [
@@ -48,19 +60,31 @@ export class AdminComponent implements OnInit, OnDestroy {
         ),
       ]),
     });
-    this.setErrorService
-      .getErrorData()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((data: IValidationMessage[]) => {
-        [this.errorMessages] = data;
-        return this.errorMessages;
-      });
     this.formGroup.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
       this.validationService.setValidationErrors(this.formGroup, this.errorMessages);
     });
   }
 
-  ngOnDestroy() {
+  createCard(): void {
+    this.store.dispatch(
+      addCustomItem({
+        item: {
+          title: this.formGroup.value.title,
+          description: this.formGroup.value.description,
+          img: this.formGroup.value.img,
+          linkVideo: this.formGroup.value.videoLink,
+          date: this.formGroup.value.date,
+          id: Date.now().toString(),
+        },
+      }),
+    );
+  }
+
+  getDateDiff(publishedAt: string): number {
+    return this.dateService.getDateDiff(publishedAt);
+  }
+
+  ngOnDestroy(): void {
     this.ngUnsubscribe.next('');
     this.ngUnsubscribe.complete();
   }
