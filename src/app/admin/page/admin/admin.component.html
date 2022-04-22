@@ -11,7 +11,7 @@
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Description</mat-label>
-        <input matInput class="form__input" type="text" formControlName="description" autocomplete="off">
+        <textarea matInput class="form__input" type="text" formControlName="description"></textarea>
         <mat-error *ngIf="validationService.formErrors.description">{{validationService.formErrors.description}}
         </mat-error>
       </mat-form-field>
@@ -40,6 +40,22 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <button mat-flat-button color="primary" class="form__button" [disabled]="formGroup.invalid">Create card</button>
+    <button mat-flat-button color="primary" class="form__button" [disabled]="formGroup.invalid"
+      (click)="createCard()">Create card</button>
   </form>
+
+  <div class="card-container" *ngFor="let item of (customItems$ | async)">
+    <mat-card class="example-card" [appHighlight]="getDateDiff(item.date)">
+      <img mat-card-image src="{{ item.img }}">
+      <mat-card-content>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <div>{{item.description}}</div>
+        <div>{{item.linkVideo}}</div>
+        <div>{{item.date | date: 'EEEE, MMMM d, y'}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>more...</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, take, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { SearchItem } from '@youtube/models/search-item.model';
+import { addSearchItem } from 'src/app/redux/actions/search.action';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -15,14 +17,14 @@ export class SearchResultStateService {
   private item$$ = new BehaviorSubject<SearchItem | null>(null);
   public item$ = this.item$$.pipe();
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private store: Store) {}
 
   initData(searchValue: string | null): void {
     if (searchValue) {
       this.items$ = this.httpService.getItems(searchValue).pipe(
         take(1),
         tap((items: SearchItem[]) => {
-          this.items$$.next(items);
+          this.store.dispatch(addSearchItem({ searchItems: items }));
           this.searchItems = items;
         }),
       );

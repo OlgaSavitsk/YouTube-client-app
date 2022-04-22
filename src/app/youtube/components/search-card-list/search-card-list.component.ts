@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { SearchItem } from '@youtube/models/search-item.model';
+import { customSelector } from 'src/app/redux/selectors/collection.selector';
 
 @Component({
   selector: 'app-search-card-list',
@@ -15,5 +17,7 @@ export default class SearchCardListComponent {
   @Input() sortParam: string | undefined;
   @Input() filterWord!: string;
 
-  constructor() {}
+  customItems$ = this.store.select(customSelector);
+
+  constructor(private store: Store) {}
 }

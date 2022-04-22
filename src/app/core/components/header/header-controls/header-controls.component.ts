@@ -9,6 +9,8 @@ import {
 
 import YoutubeService from '@youtube/services/youtube.service';
 import { SearchResultStateService } from '@youtube/services/search-result-state.service';
+import { Router } from '@angular/router';
+import { Path } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-header-controls',
@@ -26,6 +28,7 @@ export default class HeaderControlsComponent implements OnInit {
   constructor(
     private youtubeService: YoutubeService,
     private httpStateService: SearchResultStateService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +57,9 @@ export default class HeaderControlsComponent implements OnInit {
   onToggleFilter(): void {
     this.isToggleFilter = !this.isToggleFilter;
     this.youtubeService.isToggleFilter = !this.isToggleFilter;
+  }
+
+  goSearchPage(): void {
+    this.router.navigate([Path.searchPage]);
   }
 }

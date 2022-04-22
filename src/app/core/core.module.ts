@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
+import SharedModule from '@shared/shared.module';
 import HeaderComponent from './components/header/header.component';
 import HeaderControlsComponent from './components/header/header-controls/header-controls.component';
 import LoginComponent from './components/header/login/login.component';
@@ -16,7 +17,7 @@ import NotFoundComponent from './pages/not-found/not-found.component';
     FooterComponent,
     NotFoundComponent,
   ],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, SharedModule],
   exports: [
     HeaderComponent,
     LoginComponent,

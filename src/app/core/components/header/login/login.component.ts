@@ -20,4 +20,8 @@ export default class LoginComponent {
     this.authService.logout();
     this.username = defaultUserName;
   }
+
+  createNewCard(): void {
+    this.router.navigate([Path.adminPage]);
+  }
 }

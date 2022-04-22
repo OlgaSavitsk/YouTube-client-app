@@ -1,4 +1,6 @@
 <div class="login">
+    <button *ngIf="(authService.isLogged$ | async)" class="login__button" (click)="createNewCard()">Create new
+        card</button>
     <p>{{ username }}</p>
     <img class="login__avatar" src="assets/icons/login.svg" alt="avatar">
     <button *ngIf="(authService.isLogged$ | async); else logIn" class="login__button" (click)="logOut()">Log

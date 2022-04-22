@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import SharedModule from '@shared/shared.module';
 import FilterComponent from './components/filter/filter.component';
@@ -8,18 +7,15 @@ import SearchCardComponent from './components/search-card/search-card.component'
 import SearchCardListComponent from './components/search-card-list/search-card-list.component';
 import SortButtonsComponent from './components/filter/sort-buttons/sort-buttons.component';
 import SortByWordsButtonComponent from './components/filter/sort-by-words-button/sort-by-words-button.component';
-import HighlightDirective from './directives/highlight.directive';
 import CardDetailsPageComponent from './pages/card-details-page/card-details-page.component';
 import FilterPipe from './pipes/filter.pipe';
 import SortPipe from './pipes/sort.pipe';
 import YoutubeRoutingModule from './youtube-routing.module';
 import SearchResultPageComponent from './pages/card-list-page/search-result-page.component';
-import HighlightButtonDirective from './directives/highlight-button.directive';
+import DirectivesModule from './directives/directives.module';
 
 @NgModule({
   declarations: [
-    HighlightDirective,
-    HighlightButtonDirective,
     SortPipe,
     FilterPipe,
     SearchCardListComponent,
@@ -30,12 +26,7 @@ import HighlightButtonDirective from './directives/highlight-button.directive';
     CardDetailsPageComponent,
     SearchResultPageComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    YoutubeRoutingModule,
-  ],
+  imports: [CommonModule, SharedModule, YoutubeRoutingModule, DirectivesModule],
   exports: [
     FilterComponent,
     SearchCardListComponent,
