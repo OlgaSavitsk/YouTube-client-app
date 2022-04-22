@@ -49,9 +49,9 @@
       <img mat-card-image src="{{ item.img }}">
       <mat-card-content>
         <mat-card-title>{{ item.title }}</mat-card-title>
-        <p>{{item.description}}</p>
-        <p>{{item.linkVideo}}</p>
-        <p>{{item.date | date: 'EEEE, MMMM d, y'}}</p>
+        <div>{{item.description}}</div>
+        <div>{{item.linkVideo}}</div>
+        <div>{{item.date | date: 'EEEE, MMMM d, y'}}</div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>more...</button>

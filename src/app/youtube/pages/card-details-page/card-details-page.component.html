@@ -27,3 +27,33 @@
         </mat-card-content>
     </div>
 </div>
+
+<div class="details" *ngIf="customCard" [appHighlight]="getDateDiff(customCard.date)">
+    <button class="details__button_back" [appHighlightButton]="getDateDiff(customCard.date)">
+        <a routerLink="/search" routerLinkActive="active">
+            <img src="assets/icons/back-button.svg" alt="">
+        </a>
+    </button>
+    <div class="details__image">
+        <img src="{{customCard.img}}">
+    </div>
+    <div class="details__description">
+        <h2 class="details__title">{{ customCard.title }}</h2>
+        <span class="details__date">{{customCard.date | date: 'EEEE, MMMM d, y'}}</span>
+
+        <div class="text-block">
+            <h3 class="details__subtitle">Description:</h3>
+            <p class="details__date">{{ customCard.description }}</p>
+        </div>
+        <mat-card-content>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
+            <mat-card-subtitle></mat-card-subtitle>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_up</mat-icon>
+            <mat-card-subtitle></mat-card-subtitle>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_down</mat-icon>
+            <mat-card-subtitle></mat-card-subtitle>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">question_answer</mat-icon>
+            <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-content>
+    </div>
+</div>

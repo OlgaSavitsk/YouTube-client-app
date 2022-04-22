@@ -8,10 +8,10 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { INTERCEPTOR_PROVIDERS } from '@core/interceptors/providers';
 import CoreModule from '@core/core.module';
+import { AdminModule } from '@admin/admin.module';
 import { reducers } from './redux/reducers';
 import AppComponent from './app.component';
 import AppRoutingModule from './app-routing.module';
-import { AdminModule } from '@admin/admin.module';
 
 @NgModule({
   declarations: [AppComponent],

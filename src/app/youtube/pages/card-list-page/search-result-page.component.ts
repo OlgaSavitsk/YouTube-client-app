@@ -21,6 +21,7 @@ export default class SearchResultPageComponent implements DoCheck {
   isDeskSortDate: boolean | undefined;
   isDeskSortView: boolean | undefined;
   sortParam: string | undefined;
+  searchItems$: any;
 
   constructor(
     private youtubeService: YoutubeService,

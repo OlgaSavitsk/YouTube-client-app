@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { SearchItem } from '@youtube/models/search-item.model';
-import { customSelector } from 'src/app/redux/selectors/custom.selector';
+import { customSelector } from 'src/app/redux/selectors/collection.selector';
 
 @Component({
   selector: 'app-search-card-list',

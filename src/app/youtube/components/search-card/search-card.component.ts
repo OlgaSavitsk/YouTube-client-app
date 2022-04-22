@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
+
 import { SearchItem } from '@youtube/models/search-item.model';
 import DateService from '@youtube/services/date.service';
 import { ICustomItem } from 'src/app/admin/models/custom-item.model';
@@ -18,21 +19,22 @@ export default class SearchCardComponent implements OnInit {
   constructor(private dateService: DateService) {}
 
   ngOnInit(): void {
-    console.log(this.item);
-    const {
-      snippet: {
-        thumbnails: {
-          medium: { url: urlValue },
+    if (this.item) {
+      const {
+        snippet: {
+          thumbnails: {
+            medium: { url: urlValue },
+          },
         },
-      },
-    } = this.item;
-    this.itemImageUrl = urlValue;
-    const {
-      snippet: {
-        localized: { title: titleValue },
-      },
-    } = this.item;
-    this.itemTitle = titleValue;
+      } = this.item;
+      this.itemImageUrl = urlValue;
+      const {
+        snippet: {
+          localized: { title: titleValue },
+        },
+      } = this.item;
+      this.itemTitle = titleValue;
+    }
   }
 
   getDateDiff(publishedAt: string): number {

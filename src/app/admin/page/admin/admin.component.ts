@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { ValidationService } from '@auth/services/validation.service';
 import { IValidationMessage } from '@shared/models/form-error.model';
-import { addCustomItem } from 'src/app/redux/actions/custom.actions';
-import { customSelector } from 'src/app/redux/selectors/custom.selector';
 import DateService from '@youtube/services/date.service';
+import { addCustomItem } from 'src/app/redux/actions/custom.actions';
+import { customSelector } from 'src/app/redux/selectors/collection.selector';
 import DataJson from 'src/assets/data-error-message.json';
 import { ICustomItem } from '../../models/custom-item.model';
 
