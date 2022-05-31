@@ -16,6 +16,11 @@ export class ApiInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
+    if(request.url.includes('assets')) {
+      return next.handle(
+        request.clone({
+          url: `/${request.url}`}))
+    }
     return next.handle(
       request.clone({
         url: `${BASE_URL}/${request.url}`,

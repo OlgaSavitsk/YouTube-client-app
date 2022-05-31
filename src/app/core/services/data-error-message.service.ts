@@ -22,7 +22,6 @@ export class DataErrorMessageService {
   }
 
   getErrorData(): any {
-    console.log(this.errorData$);
     return this.errorData ? this.errorData$ : this.errorData$;
   }
 }
